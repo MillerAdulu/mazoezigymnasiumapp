@@ -9,4 +9,6 @@
     <string name="target_weight">Target Weight</string>
     <string name="gender">Gender</string>
     <string name="view_profile">View Profile</string>
+    <string name="names">Names</string>
+    <string name="view_gym_instructors">View Gym Instructors</string>
 </resources>
