@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent profileIntent = new Intent(this, ProfileActivity.class);
         MainActivity.this.startActivity(profileIntent);
     }
+
+    public void openGymInstructors(View view) {
+        Intent gymInstructors = new Intent(this, GymInstructorsActivity.class);
+        MainActivity.this.startActivity(gymInstructors);
+    }
 }
