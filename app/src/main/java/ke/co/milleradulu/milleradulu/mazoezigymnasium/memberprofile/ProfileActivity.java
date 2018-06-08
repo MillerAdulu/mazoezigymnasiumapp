@@ -1,6 +1,5 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.memberprofile;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +14,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 
 public class ProfileActivity extends AppCompatActivity {
 

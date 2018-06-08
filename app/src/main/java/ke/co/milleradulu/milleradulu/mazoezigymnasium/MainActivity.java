@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructor.GymInstructorsActivity;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.memberprofile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
