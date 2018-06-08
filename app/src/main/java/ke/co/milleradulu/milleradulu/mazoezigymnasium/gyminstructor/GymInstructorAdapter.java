@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructor;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,18 +9,20 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+
 public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdapter.ViewHolder> {
 
     private List<GymInstructor> gymInstructorList;
 
-    public GymInstructorAdapter(List<GymInstructor> gymInstructorList){
+    GymInstructorAdapter(List<GymInstructor> gymInstructorList){
         this.gymInstructorList = gymInstructorList;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView names, email, gender;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             names = itemView.findViewById(R.id.gym_instructor_names);
             email = itemView.findViewById(R.id.gym_instructor_email);

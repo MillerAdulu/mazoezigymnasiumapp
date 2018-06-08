@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".GymInstructorsActivity"></activity>
+        <activity android:name=".gyminstructor.GymInstructorsActivity"></activity>
     </application>
 
 </manifest>

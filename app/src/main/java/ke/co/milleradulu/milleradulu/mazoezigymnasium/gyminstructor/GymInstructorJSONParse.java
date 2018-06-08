@@ -1,6 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium;
-
-import android.util.Log;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructor;
 
 import org.json.JSONArray;
 import org.json.JSONException;

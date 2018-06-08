@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,14 +10,14 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
+
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 
 public class GymInstructorsActivity extends AppCompatActivity {
 
