@@ -11,29 +11,32 @@ public class GymInstructorJSONParse {
     private List<GymInstructor> gymInstructorsList;
     private JSONArray gymInstructors;
 
-    GymInstructorJSONParse(JSONObject gymInstructorsArray){
-        try{
-            this.gymInstructors = gymInstructorsArray.getJSONArray("data");
-        } catch (JSONException e){
+    GymInstructorJSONParse(JSONObject gymInstructorsObject) {
+        try {
+            this.gymInstructors = gymInstructorsObject.getJSONArray("data");
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
 
-    protected void parseJSON(){
+    protected void parseJSON() {
 
         try {
 
-            String[] names = new String[gymInstructors.length()];
-            String[] emails = new String[gymInstructors.length()];
-            String[] genders = new String[gymInstructors.length()];
+            int arrayLength = gymInstructors.length();
+
+            String[] names = new String[arrayLength];
+            String[] emails = new String[arrayLength];
+            String[] genders = new String[arrayLength];
 
             gymInstructorsList = new ArrayList<>();
 
-            for(int i = 0; i < gymInstructors.length(); i++){
+            for(int i = 0; i < arrayLength; i++) {
                 GymInstructor gymInstructorObject = new GymInstructor();
 
                 JSONObject jsonObject = gymInstructors.getJSONObject(i);
+
                 names[i] = jsonObject.getString("names");
                 emails[i] = jsonObject.getString("email");
                 genders[i] = jsonObject.getString("gender");
@@ -45,7 +48,7 @@ public class GymInstructorJSONParse {
                 gymInstructorsList.add(gymInstructorObject);
             }
 
-        } catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
