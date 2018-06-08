@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructor;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors;
 
 import org.json.JSONArray;
 import org.json.JSONException;

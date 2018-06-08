@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructor;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

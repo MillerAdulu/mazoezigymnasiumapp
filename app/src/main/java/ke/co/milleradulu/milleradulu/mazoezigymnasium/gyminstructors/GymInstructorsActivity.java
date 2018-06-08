@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructor;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
