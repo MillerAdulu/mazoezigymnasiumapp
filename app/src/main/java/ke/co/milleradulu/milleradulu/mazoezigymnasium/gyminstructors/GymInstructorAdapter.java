@@ -11,7 +11,7 @@ import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 
-public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdapter.ViewHolder> {
+public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdapter.GymInstructorViewHolder> {
 
     private List<GymInstructor> gymInstructorList;
 
@@ -19,10 +19,10 @@ public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdap
         this.gymInstructorList = gymInstructorList;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class GymInstructorViewHolder extends RecyclerView.ViewHolder {
         public TextView names, email, gender;
 
-        ViewHolder(View itemView) {
+        GymInstructorViewHolder(View itemView) {
             super(itemView);
             names = itemView.findViewById(R.id.gym_instructor_names);
             email = itemView.findViewById(R.id.gym_instructor_email);
@@ -43,13 +43,13 @@ public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdap
 
     @NonNull
     @Override
-    public GymInstructorAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GymInstructorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View gymInstructorView = LayoutInflater.from(parent.getContext()).inflate(R.layout.gym_instructor_card, parent, false);
-        return new ViewHolder(gymInstructorView);
+        return new GymInstructorViewHolder(gymInstructorView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GymInstructorViewHolder holder, int position) {
         holder.names.setText(gymInstructorList.get(position).getNames());
         holder.email.setText(gymInstructorList.get(position).getEmail());
         holder.gender.setText(gymInstructorList.get(position).getGender());
