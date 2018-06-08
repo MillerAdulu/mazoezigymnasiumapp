@@ -15,7 +15,7 @@ public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdap
 
     private List<GymInstructor> gymInstructorList;
 
-    GymInstructorAdapter(List<GymInstructor> gymInstructorList){
+    GymInstructorAdapter(List<GymInstructor> gymInstructorList) {
         this.gymInstructorList = gymInstructorList;
     }
 
@@ -30,12 +30,12 @@ public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdap
         }
     }
 
-    public void add(int position, GymInstructor gymInstructor){
+    public void add(int position, GymInstructor gymInstructor) {
         gymInstructorList.add(position, gymInstructor);
         notifyItemInserted(position);
     }
 
-    public void remove(GymInstructor gymInstructor){
+    public void remove(GymInstructor gymInstructor) {
         int position = gymInstructorList.indexOf(gymInstructor);
         gymInstructorList.remove(position);
         notifyItemRemoved(position);
