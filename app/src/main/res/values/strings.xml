@@ -19,4 +19,7 @@
     <string name="session_exercise">Exercise</string>
     <string name="session_reps">Reps</string>
     <string name="session_sets">Sets</string>
+    <string name="pick_date">Date</string>
+    <string name="choose_date">Choose the Date</string>
+    <string name="add_session">Add Session</string>
 </resources>

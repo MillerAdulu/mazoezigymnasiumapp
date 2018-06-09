@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".workoutsessions.addsession.AddWorkOutSessionActivity">
+
+    <TextView
+        android:id="@+id/pick_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_date"
+        android:layout_marginVertical="@dimen/fab_margin"/>
+
+    <Button
+        android:id="@+id/button_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_date"
+        android:layout_below="@id/pick_date_label"
+        android:onClick="showDatePickerDialog"/>
+
+    <TextView
+        android:id="@+id/location_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_date"
+        android:text="@string/session_location"/>
+
+    <TextView
+        android:id="@+id/add_sets_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/session_sets"
+        android:layout_below="@id/location_label"
+        android:layout_marginHorizontal="@dimen/fab_margin" />
+
+    <EditText
+        android:id="@+id/add_sets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_below="@id/location_label"
+        android:layout_toEndOf="@id/add_sets_label"
+        android:hint="@string/session_sets" />
+
+    <TextView
+        android:id="@+id/add_reps_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/session_reps"
+        android:layout_below="@id/add_sets_label"
+        android:layout_marginHorizontal="@dimen/fab_margin" />
+
+    <EditText
+        android:id="@+id/add_reps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_sets"
+        android:inputType="number"
+        android:layout_toEndOf="@id/add_sets_label"
+        android:hint="@string/session_reps" />
+
+    <Button
+        android:id="@+id/add_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_session"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>
