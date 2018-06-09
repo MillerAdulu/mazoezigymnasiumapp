@@ -14,4 +14,9 @@
     <string name="gym_location">Location</string>
     <string name="gym_opening_time">Opening Time</string>
     <string name="gym_closing_time">Closing Time</string>
+    <string name="session_date">Date</string>
+    <string name="session_location">Session Location</string>
+    <string name="session_exercise">Exercise</string>
+    <string name="session_reps">Reps</string>
+    <string name="session_sets">Sets</string>
 </resources>
