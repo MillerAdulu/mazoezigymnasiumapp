@@ -25,7 +25,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_date"
+        android:layout_marginHorizontal="@dimen/fab_margin"
         android:text="@string/session_location"/>
+
+    <Spinner
+        android:id="@+id/location_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/location_label"
+        android:layout_below="@id/button_date"/>
 
     <TextView
         android:id="@+id/add_sets_label"
@@ -66,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_session"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:onClick="addSession" />
 
 </RelativeLayout>
