@@ -26,6 +26,7 @@
         <activity android:name=".gyminstructors.GymInstructorsActivity" />
         <activity android:name=".gymlocations.GymLocationsActivity" />
         <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
+        <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
     </application>
 
 </manifest>
