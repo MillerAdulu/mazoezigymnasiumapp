@@ -9,6 +9,8 @@ import java.util.List;
 
 public class GymLocationJSONParse {
     private List<GymLocation> gymLocationsList;
+    private ArrayList<String> locationsList;
+
     private JSONArray gymLocationsArray;
 
     GymLocationJSONParse(JSONObject gymLocationsObject){
@@ -29,6 +31,7 @@ public class GymLocationJSONParse {
             String[] gymClosingTimes = new String[arrayLength];
 
             gymLocationsList = new ArrayList<>();
+            locationsList = new ArrayList<>();
 
             for (int i = 0; i < arrayLength; i++){
                 GymLocation gymLocationObject = new GymLocation();
@@ -44,6 +47,7 @@ public class GymLocationJSONParse {
                 gymLocationObject.setGymClosingTime(gymClosingTimes[i]);
 
                 gymLocationsList.add(gymLocationObject);
+                locationsList.add(jsonObject.optString("location"));
             }
 
         } catch (JSONException e) {
@@ -53,5 +57,8 @@ public class GymLocationJSONParse {
 
     List<GymLocation> getGymLocations(){
         return gymLocationsList;
+    }
+    ArrayList<String> gymLocationsForSpinner() {
+        return locationsList;
     }
 }
