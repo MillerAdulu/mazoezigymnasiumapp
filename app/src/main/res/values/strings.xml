@@ -22,4 +22,7 @@
     <string name="pick_date">Date</string>
     <string name="choose_date">Choose the Date</string>
     <string name="add_session">Add Session</string>
+    <string name="view_sessions_history">View Sessions History</string>
+    <string name="add_work_out_session">Add Work Out Session</string>
+    <string name="view_gym_locations">View Gym Locations</string>
 </resources>
