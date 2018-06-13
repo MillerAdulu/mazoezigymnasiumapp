@@ -8,6 +8,7 @@ import android.view.View;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors.GymInstructorsActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations.GymLocationsActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.memberprofile.ProfileActivity;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.memberprofile.update.UpdateProfileActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.addsession.AddWorkOutSessionActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history.WorkOutHistoryActivity;
 
@@ -45,5 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void editProfile(View view) {
+        Intent editProfile = new Intent(this, UpdateProfileActivity.class);
+        startActivity(editProfile);
     }
 }
