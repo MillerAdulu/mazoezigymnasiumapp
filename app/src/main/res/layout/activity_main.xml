@@ -15,6 +15,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="editProfile"
+        android:text="@string/edit_profile"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="openGymInstructors"
         android:text="@string/view_gym_instructors" />
 

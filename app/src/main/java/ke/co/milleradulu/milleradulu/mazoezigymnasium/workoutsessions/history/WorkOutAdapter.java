@@ -44,9 +44,14 @@ public class WorkOutAdapter extends RecyclerView.Adapter<WorkOutAdapter.WorkOutV
     public void onBindViewHolder(@NonNull WorkOutViewHolder holder, int position) {
         holder.date.setText(workOutList.get(position).getDate());
         holder.location.setText(workOutList.get(position).getLocation());
-        holder.exercise.setText(workOutList.get(position).getExercise());
+        holder.exercise.setText(workOutList.get(position).getExercise_type());
         holder.reps.setText(workOutList.get(position).getReps());
         holder.sets.setText(workOutList.get(position).getSets());
+    }
+
+    public void add(int position, WorkOut workOut) {
+        workOutList.add(position, workOut);
+        notifyItemInserted(position);
     }
 
     @Override

@@ -43,4 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Intent viewGymLocations = new Intent(this, GymLocationsActivity.class);
         startActivity(viewGymLocations);
     }
+
+    public void editProfile(View view) {
+    }
 }

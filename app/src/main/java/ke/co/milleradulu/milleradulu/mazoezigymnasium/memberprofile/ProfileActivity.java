@@ -1,28 +1,23 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.memberprofile;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Locale;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.ServiceProvider;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    public final static String TAG = ProfileActivity.class.getSimpleName();
     TextView firstName, lastName, email, age, gender, weight, target_weight;
-    public static final String MAZOEZI_URL = "https://mazoezigymnasium.herokuapp.com/member/profile/2";
-    public static final String TAG = "PROFILE SCREEN";
-    RequestQueue profileRequestQueue;
+    MemberProfile memberProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,42 +32,28 @@ public class ProfileActivity extends AppCompatActivity {
         weight = findViewById(R.id.weight);
         target_weight = findViewById(R.id.target_weight);
 
-        profileRequestQueue = Volley.newRequestQueue(this);
+        MemberProfileClient memberProfileClient = ServiceProvider.createService(MemberProfileClient.class);
+        Call<MemberProfile> callMemberProfile = memberProfileClient.member(1);
+        callMemberProfile.enqueue(new Callback<MemberProfile>() {
+            @Override
+            public void onResponse(@NonNull Call<MemberProfile> call, @NonNull retrofit2.Response<MemberProfile> response) {
+                memberProfile = response.body();
 
-        JsonObjectRequest profileJSONObjectRequest = new JsonObjectRequest(
-                Request.Method.GET,
-                MAZOEZI_URL,
-                null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try{
-                            JSONObject profileObject = response.getJSONObject("data");
+                firstName.setText(memberProfile.getFirst_name());
+                lastName.setText(memberProfile.getLast_name());
+                email.setText(memberProfile.getEmail());
+                age.setText(String.format(Locale.ENGLISH ,"%d", memberProfile.getAge()));
+                gender.setText(String.format(Locale.ENGLISH ,"%d", memberProfile.getGender()));
+                weight.setText(String.format(Locale.ENGLISH ,"%f", memberProfile.getWeight()));
+                target_weight.setText(String.format(Locale.ENGLISH ,"%f", memberProfile.getTarget_weight()));
 
-                            Log.d(TAG, profileObject.toString());
+            }
 
-                            firstName.setText(profileObject.getString("first_name"));
-                            lastName.setText(profileObject.getString("last_name"));
-                            email.setText(profileObject.getString("email"));
-                            age.setText(profileObject.getString("age"));
-                            gender.setText(profileObject.getString("gender"));
-                            weight.setText(profileObject.getString("weight"));
-                            target_weight.setText(profileObject.getString("target_weight"));
-
-                        } catch (JSONException e){
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, error.toString());
-                    }
-                }
-        );
-
-        profileRequestQueue.add(profileJSONObjectRequest);
+            @Override
+            public void onFailure(@NonNull Call<MemberProfile> call, @NonNull Throwable t) {
+                Log.d(TAG, t.toString());
+            }
+        });
 
     }
 }

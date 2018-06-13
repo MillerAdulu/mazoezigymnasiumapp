@@ -1,7 +1,7 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history;
 
 public class WorkOut {
-    private String date, location, exercise, reps, sets;
+    private String date, location, exercise_type, reps, sets;
 
     public String getDate() {
         return date;
@@ -19,12 +19,12 @@ public class WorkOut {
         this.location = location;
     }
 
-    public String getExercise() {
-        return exercise;
+    public String getExercise_type() {
+        return exercise_type;
     }
 
-    public void setExercise(String exercise) {
-        this.exercise = exercise;
+    public void setExercise_type(String exercise_type) {
+        this.exercise_type = exercise_type;
     }
 
     public String getReps() {

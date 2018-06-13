@@ -39,9 +39,9 @@ public class GymLocationAdapter extends RecyclerView.Adapter<GymLocationAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull GymLocationViewHolder holder, int position){
-        holder.gymLocation.setText(gymLocationList.get(position).getGymLocation());
-        holder.gymOpeningTime.setText(gymLocationList.get(position).getGymOpeningTime());
-        holder.gymClosingTime.setText(gymLocationList.get(position).getGymClosingTime());
+        holder.gymLocation.setText(gymLocationList.get(position).getLocation());
+        holder.gymOpeningTime.setText(gymLocationList.get(position).getOpening_time());
+        holder.gymClosingTime.setText(gymLocationList.get(position).getClosing_time());
     }
 
     @Override

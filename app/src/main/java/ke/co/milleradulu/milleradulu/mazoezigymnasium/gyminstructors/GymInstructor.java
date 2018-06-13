@@ -1,7 +1,7 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors;
 
 public class GymInstructor {
-    private String names, email, gender;
+    private String names, email, gender, photo;
 
     public String getNames() {
         return names;
@@ -25,5 +25,13 @@ public class GymInstructor {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getPhoto() {
+        return photo;
     }
 }
