@@ -5,7 +5,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class ServiceProvider {
+public class APIServiceProvider {
     private static final String BASE_URL = "https://mazoezigymnasium.herokuapp.com";
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();

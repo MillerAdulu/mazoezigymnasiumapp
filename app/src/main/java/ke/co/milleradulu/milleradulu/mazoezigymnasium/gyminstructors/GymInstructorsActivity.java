@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.ServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.GymInstructorClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.GymInstructor;
 import retrofit2.Call;
@@ -36,7 +36,7 @@ public class GymInstructorsActivity extends AppCompatActivity {
         RecyclerView.LayoutManager gymInstructorsLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         gymInstructorsRecyclerView.setLayoutManager(gymInstructorsLayoutManager);
 
-        GymInstructorClient gymInstructorClient = ServiceProvider.createService(GymInstructorClient.class);
+        GymInstructorClient gymInstructorClient = APIServiceProvider.createService(GymInstructorClient.class);
         Call<List<GymInstructor>> gymInstructorCall = gymInstructorClient.gymInstructors();
 
         gymInstructorCall.enqueue(new Callback<List<GymInstructor>>() {

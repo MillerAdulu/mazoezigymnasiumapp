@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.ServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.MemberProfileClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.MemberProfile;
 import retrofit2.Call;
@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
         weight = findViewById(R.id.weight);
         target_weight = findViewById(R.id.target_weight);
 
-        MemberProfileClient memberProfileClient = ServiceProvider.createService(MemberProfileClient.class);
+        MemberProfileClient memberProfileClient = APIServiceProvider.createService(MemberProfileClient.class);
         Call<MemberProfile> callMemberProfile = memberProfileClient.member(1);
         callMemberProfile.enqueue(new Callback<MemberProfile>() {
             @Override

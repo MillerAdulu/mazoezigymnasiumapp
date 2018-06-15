@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.ServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.WorkOut;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.WorkOutSessionClient;
 import retrofit2.Call;
@@ -34,7 +34,7 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
         RecyclerView.LayoutManager workOutsLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         workOutHistoryRecyclerView.setLayoutManager(workOutsLayoutManager);
 
-        WorkOutSessionClient workOutSessionClient = ServiceProvider.createService(WorkOutSessionClient.class);
+        WorkOutSessionClient workOutSessionClient = APIServiceProvider.createService(WorkOutSessionClient.class);
         Call<List<WorkOut>> workOutCall = workOutSessionClient.workOutSessions(1);
 
         workOutCall.enqueue(new Callback<List<WorkOut>>() {

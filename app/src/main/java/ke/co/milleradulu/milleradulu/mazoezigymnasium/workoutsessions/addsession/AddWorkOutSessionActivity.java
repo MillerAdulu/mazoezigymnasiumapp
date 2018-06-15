@@ -21,7 +21,7 @@ import java.util.List;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.Exercise;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.ExerciseClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.ServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.GymLocation;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.GymLocationClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.WorkOutSessionClient;
@@ -92,7 +92,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
         int sets = Integer.parseInt(addSets.getText().toString());
         int reps = Integer.parseInt(addReps.getText().toString());
 
-        WorkOutSessionClient workOutSessionClient = ServiceProvider.createService(WorkOutSessionClient.class);
+        WorkOutSessionClient workOutSessionClient = APIServiceProvider.createService(WorkOutSessionClient.class);
         int member = 1;
         Call<WorkOut> workOutCall = workOutSessionClient.addSession(
                 year,
@@ -120,7 +120,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
     }
 
     public void loadLocationsSpinner() {
-        GymLocationClient gymLocationClient = ServiceProvider.createService(GymLocationClient.class);
+        GymLocationClient gymLocationClient = APIServiceProvider.createService(GymLocationClient.class);
         Call<List<GymLocation>> gymLocationCall = gymLocationClient.gymLocations();
 
         gymLocationCall.enqueue(new Callback<List<GymLocation>>() {
@@ -139,7 +139,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
     }
 
     public void loadExercisesSpinner() {
-        ExerciseClient exerciseClient = ServiceProvider.createService(ExerciseClient.class);
+        ExerciseClient exerciseClient = APIServiceProvider.createService(ExerciseClient.class);
         Call<List<Exercise>> exercisesCall = exerciseClient.exercises();
 
         exercisesCall.enqueue(new Callback<List<Exercise>>() {

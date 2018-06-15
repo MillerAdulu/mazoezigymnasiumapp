@@ -3,7 +3,6 @@ package ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.ArrayMap;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -15,7 +14,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.ServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.GymLocationClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.GymLocation;
 import retrofit2.Call;
@@ -31,7 +30,7 @@ public class GymLocationsActivity extends AppCompatActivity implements OnMapRead
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gym_locations);
 
-        GymLocationClient gymLocationClient = ServiceProvider.createService(GymLocationClient.class);
+        GymLocationClient gymLocationClient = APIServiceProvider.createService(GymLocationClient.class);
         Call<List<GymLocation>> gymLocationCall = gymLocationClient.gymLocations();
 
         gymLocationCall.enqueue(new Callback<List<GymLocation>>() {
