@@ -20,17 +20,16 @@ public interface MemberClient {
     );
 
     @FormUrlEncoded
-    @POST ("/member/extradetails/{id}")
+    @POST ("/member/update")
     Call<Member> update(
-            @Path("id") int id,
+            @Field("id") int id,
             @Field("first_name") String first_name,
             @Field("last_name") String last_name,
-            @Field("email") String email,
-            @Field("home") int home,
             @Field("age") int age,
-            @Field("gender") int gender,
             @Field("weight") float weight,
-            @Field("target_weight") float target_weight
+            @Field("target_weight") float target_weight,
+            @Field("email") String email,
+            @Field("gender") int gender
     );
 
     @FormUrlEncoded

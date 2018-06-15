@@ -36,5 +36,6 @@
     <string name="password_mismatch">Passwords don\'t match!</string>
     <string name="short_password">Short Password! Ensure it\'s 8 characters long!</string>
     <string name="signed_up">You are signed up :-)</string>
+    <string name="update_profile">Update Profile</string>
 
 </resources>
