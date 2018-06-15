@@ -32,7 +32,7 @@
         <activity android:name=".gymlocations.GymLocationsActivity" />
         <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
         <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
-        <activity android:name=".members.update.UpdateProfileActivity" />
+        <activity android:name=".members.UpdateProfileActivity" />
 
         <meta-data
             android:name="com.google.android.gms.maps"
