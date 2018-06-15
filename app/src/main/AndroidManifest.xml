@@ -28,6 +28,15 @@
         <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
         <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
         <activity android:name=".memberprofile.update.UpdateProfileActivity" />
+        <activity android:name=".GymLocationsMapActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.maps"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBbIEphLJb1YDP9o8eIv-mu9xqo7s4IGZQ" />
+
     </application>
 
 </manifest>

@@ -1,7 +1,16 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations;
 
 public class GymLocation {
+    private int id;
     private String location, opening_time, closing_time, longitude, latitude;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getLocation() {
         return location;

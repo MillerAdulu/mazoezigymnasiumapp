@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions;
 
 import java.util.List;
 
@@ -18,11 +18,11 @@ public interface WorkOutSessionClient {
     @FormUrlEncoded
     @POST ("/workoutsession/add")
     Call<WorkOut> addSession(
-            @Field("year") String year,
-            @Field("month") String month,
-            @Field("day") String day,
-            @Field("location") String location,
-            @Field("exercise_type") String exercise_type,
+            @Field("year") int year,
+            @Field("month") int month,
+            @Field("day") int day,
+            @Field("location") int location,
+            @Field("exercise_type") int exercise_type,
             @Field("reps") int reps,
             @Field("sets") int sets,
             @Field("member") int member
