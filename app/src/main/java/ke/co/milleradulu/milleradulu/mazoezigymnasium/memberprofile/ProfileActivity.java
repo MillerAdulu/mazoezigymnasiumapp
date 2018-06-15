@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.Locale;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
@@ -20,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
     public final static String TAG = ProfileActivity.class.getSimpleName();
     TextView firstName, lastName, email, age, gender, weight, target_weight;
     MemberProfile memberProfile;
+    DecimalFormat decimalFormat = new DecimalFormat(".##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +46,16 @@ public class ProfileActivity extends AppCompatActivity {
                 firstName.setText(memberProfile.getFirst_name());
                 lastName.setText(memberProfile.getLast_name());
                 email.setText(memberProfile.getEmail());
+
+                if(memberProfile.getGender() == 0) {
+                    gender.setText(R.string.male_gender);
+                } else {
+                    gender.setText(R.string.female_gender);
+                }
+
                 age.setText(String.format(Locale.ENGLISH ,"%d", memberProfile.getAge()));
-                gender.setText(String.format(Locale.ENGLISH ,"%d", memberProfile.getGender()));
-                weight.setText(String.format(Locale.ENGLISH ,"%f", memberProfile.getWeight()));
-                target_weight.setText(String.format(Locale.ENGLISH ,"%f", memberProfile.getTarget_weight()));
+                weight.setText(String.format(Locale.ENGLISH ,"%.2f", memberProfile.getWeight()));
+                target_weight.setText(String.format(Locale.ENGLISH ,"%.2f", memberProfile.getTarget_weight()));
 
             }
 
