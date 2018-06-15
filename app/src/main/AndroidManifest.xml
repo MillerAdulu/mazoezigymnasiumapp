@@ -28,7 +28,6 @@
         <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
         <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
         <activity android:name=".memberprofile.update.UpdateProfileActivity" />
-        <activity android:name=".GymLocationsMapActivity" />
 
         <meta-data
             android:name="com.google.android.gms.maps"
