@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
 
 public class GymLocation {
     private int id;

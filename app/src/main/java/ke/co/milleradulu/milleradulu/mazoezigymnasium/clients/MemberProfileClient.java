@@ -1,7 +1,8 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.memberprofile;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.clients;
 
 import java.util.List;
 
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.MemberProfile;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

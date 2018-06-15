@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.memberprofile;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
 
 public class MemberProfile {
     private String first_name, last_name, email, home;

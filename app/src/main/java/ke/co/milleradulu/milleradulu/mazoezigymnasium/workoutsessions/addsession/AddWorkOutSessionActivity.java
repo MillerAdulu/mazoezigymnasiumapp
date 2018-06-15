@@ -18,12 +18,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.Exercise;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.ExerciseClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.Exercise;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.ExerciseClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.ServiceProvider;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations.GymLocation;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations.GymLocationClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.GymLocation;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.GymLocationClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.WorkOutSessionClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.WorkOut;
 import retrofit2.Call;

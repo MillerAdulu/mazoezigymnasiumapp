@@ -49,4 +49,9 @@ public class MainActivity extends AppCompatActivity {
         Intent editProfile = new Intent(this, UpdateProfileActivity.class);
         startActivity(editProfile);
     }
+
+    public void mapView(View view) {
+        Intent mapView = new Intent(this, GymLocationsMapActivity.class);
+        startActivity(mapView);
+    }
 }

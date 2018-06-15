@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
 
 public class GymInstructor {
     private String names, email, gender, photo;

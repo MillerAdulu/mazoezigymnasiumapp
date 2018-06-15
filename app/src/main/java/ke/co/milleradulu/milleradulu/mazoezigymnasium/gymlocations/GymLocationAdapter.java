@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.GymLocation;
 
 public class GymLocationAdapter extends RecyclerView.Adapter<GymLocationAdapter.GymLocationViewHolder> {
 

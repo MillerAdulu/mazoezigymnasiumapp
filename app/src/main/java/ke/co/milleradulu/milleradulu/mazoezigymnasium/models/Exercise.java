@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
 
 public class Exercise {
     private int id;
