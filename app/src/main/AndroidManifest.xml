@@ -27,12 +27,12 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".memberprofile.ProfileActivity" />
+        <activity android:name=".members.ProfileActivity" />
         <activity android:name=".gyminstructors.GymInstructorsActivity" />
         <activity android:name=".gymlocations.GymLocationsActivity" />
         <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
         <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
-        <activity android:name=".memberprofile.update.UpdateProfileActivity" />
+        <activity android:name=".members.update.UpdateProfileActivity" />
 
         <meta-data
             android:name="com.google.android.gms.maps"
@@ -41,7 +41,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBbIEphLJb1YDP9o8eIv-mu9xqo7s4IGZQ" />
 
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".members.LoginActivity" />
+        <activity android:name=".members.SignUpActivity"></activity>
     </application>
 
 </manifest>

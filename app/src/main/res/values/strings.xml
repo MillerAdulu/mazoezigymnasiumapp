@@ -30,5 +30,11 @@
     <string name="open_map">Open Map</string>
     <string name="male_gender">Male</string>
     <string name="female_gender">Female</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password_mismatch">Passwords don\'t match!</string>
+    <string name="short_password">Short Password! Ensure it\'s 8 characters long!</string>
+    <string name="signed_up">You are signed up :-)</string>
 
 </resources>

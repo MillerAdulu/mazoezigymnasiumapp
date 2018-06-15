@@ -11,8 +11,8 @@ import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.WorkOut;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.WorkOutSessionClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.WorkOut;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.WorkOutSessionClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 

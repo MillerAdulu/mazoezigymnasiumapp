@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
 
 public class WorkOut {
     private String date, location, exercise_type, reps, sets;

@@ -1,6 +1,6 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
 
-public class MemberProfile {
+public class Member {
     private String first_name, last_name, email, home;
     private int age, gender;
     private float weight, target_weight;

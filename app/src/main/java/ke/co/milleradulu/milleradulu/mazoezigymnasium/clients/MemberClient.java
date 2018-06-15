@@ -2,7 +2,7 @@ package ke.co.milleradulu.milleradulu.mazoezigymnasium.clients;
 
 import java.util.List;
 
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.MemberProfile;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.Member;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -10,18 +10,18 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
-public interface MemberProfileClient {
+public interface MemberClient {
     @GET ("/member")
-    Call<List<MemberProfile>> members();
+    Call<List<Member>> members();
 
     @GET ("/member/profile/{id}")
-    Call<MemberProfile> member(
+    Call<Member> member(
             @Path("id") int id
     );
 
     @FormUrlEncoded
     @POST ("/member/extradetails/{id}")
-    Call<MemberProfile> update(
+    Call<Member> update(
             @Path("id") int id,
             @Field("first_name") String first_name,
             @Field("last_name") String last_name,
@@ -35,14 +35,14 @@ public interface MemberProfileClient {
 
     @FormUrlEncoded
     @POST ("/member/login")
-    Call<MemberProfile> login(
+    Call<Member> login(
             @Field("email") String email,
             @Field("password") String password
     );
 
     @FormUrlEncoded
     @POST ("/member/register")
-    Call<MemberProfile> register(
+    Call<Member> register(
             @Field("first_name") String first_name,
             @Field("last_name") String last_name,
             @Field("email") String email,
