@@ -43,7 +43,7 @@ public class GymInstructorsActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<List<GymInstructor>> call, @NonNull Response<List<GymInstructor>> response) {
                 gymInstructors = response.body();
-                gymInstructorsAdapter = new GymInstructorAdapter(gymInstructors);
+                gymInstructorsAdapter = new GymInstructorAdapter(gymInstructors, GymInstructorsActivity.this);
                 gymInstructorsRecyclerView.setAdapter(gymInstructorsAdapter);
             }
 
