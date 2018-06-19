@@ -38,4 +38,9 @@
     <string name="signed_up">You are signed up :-)</string>
     <string name="update_profile">Update Profile</string>
 
+    <string name="com_auth0_client_id">JfX17NIIulEbM5dIEV_rmoN-UKgnZBKZ</string>
+    <string name="com_auth0_domain">mazoezi.auth0.com</string>
+    <string name="our_awesome_gym_instructor">Our awesome gym instructor</string>
+    <string name="profile_picture">Profile Picture</string>
+
 </resources>

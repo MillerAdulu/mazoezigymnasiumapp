@@ -4,7 +4,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
 import java.util.Locale;
@@ -20,14 +23,15 @@ public class ProfileActivity extends AppCompatActivity {
 
     public final static String TAG = ProfileActivity.class.getSimpleName();
     TextView firstName, lastName, email, age, gender, weight, target_weight;
+    ImageView profilePicture;
     Member member;
-    DecimalFormat decimalFormat = new DecimalFormat(".##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        profilePicture = findViewById(R.id.profile_picture);
         firstName = findViewById(R.id.first_name);
         lastName = findViewById(R.id.last_name);
         email = findViewById(R.id.email);
@@ -37,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
         target_weight = findViewById(R.id.target_weight);
 
         MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
-        Call<Member> callMemberProfile = memberClient.member(1);
+        Call<Member> callMemberProfile = memberClient.member(2);
         callMemberProfile.enqueue(new Callback<Member>() {
             @Override
             public void onResponse(@NonNull Call<Member> call, @NonNull retrofit2.Response<Member> response) {
@@ -56,6 +60,11 @@ public class ProfileActivity extends AppCompatActivity {
                 age.setText(String.format(Locale.ENGLISH ,"%d", member.getAge()));
                 weight.setText(String.format(Locale.ENGLISH ,"%.2f", member.getWeight()));
                 target_weight.setText(String.format(Locale.ENGLISH ,"%.2f", member.getTarget_weight()));
+
+                Glide.with(ProfileActivity.this)
+                        .load("https://cdn.pixabay.com/photo/2014/09/25/23/36/man-461195_960_720.jpg")
+                        .into(profilePicture);
+
 
             }
 

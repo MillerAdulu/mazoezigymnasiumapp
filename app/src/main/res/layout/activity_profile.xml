@@ -1,134 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".members.ProfileActivity">
 
-
-    <TextView
-        android:id="@+id/first_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/first_name"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin" />
-
-    <TextView
-        android:id="@+id/first_name"
+    <ImageView
+        android:id="@+id/profile_picture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/first_name"
-        android:layout_toRightOf="@id/first_name_label"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        android:contentDescription="@string/profile_picture" />
 
-    <TextView
-        android:id="@+id/last_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/last_name"
-        android:layout_below="@id/first_name_label"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin" />
-
-    <TextView
-        android:id="@+id/last_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/last_name"
-        android:layout_below="@id/first_name"
-        android:layout_toRightOf="@id/last_name_label"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/email_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:layout_below="@id/last_name_label"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        <TextView
+            android:id="@+id/first_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/first_name" />
 
-    <TextView
-        android:id="@+id/email"
+        <TextView
+            android:id="@+id/first_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/first_name" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:layout_below="@id/last_name"
-        android:layout_toRightOf="@id/last_name_label"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/age_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/age"
-        android:layout_below="@id/email_label"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        <TextView
+            android:id="@+id/last_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/last_name" />
 
-    <TextView
-        android:id="@+id/age"
+        <TextView
+            android:id="@+id/last_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/last_name" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/age"
-        android:layout_below="@id/email"
-        android:layout_toRightOf="@id/age_label"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/gender_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/gender"
-        android:layout_below="@id/age_label"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        <TextView
+            android:id="@+id/email_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/email" />
 
-    <TextView
-        android:id="@+id/gender"
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/email" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/gender"
-        android:layout_below="@id/age"
-        android:layout_toRightOf="@id/gender_label"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/weight_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weight"
-        android:layout_below="@id/gender_label"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        <TextView
+            android:id="@+id/age_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/age" />
 
-    <TextView
-        android:id="@+id/weight"
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/age" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/weight"
-        android:layout_below="@id/gender"
-        android:layout_toRightOf="@id/weight_label"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/target_weight_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/target_weight"
-        android:layout_below="@id/weight_label"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        <TextView
+            android:id="@+id/gender_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/gender" />
 
-    <TextView
-        android:id="@+id/target_weight"
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/gender" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/target_weight"
-        android:layout_below="@id/weight"
-        android:layout_toRightOf="@id/target_weight_label"
-        android:layout_marginVertical="@dimen/fab_margin" />
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/weight_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/weight" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/weight" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/target_weight_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/target_weight" />
+
+        <TextView
+            android:id="@+id/target_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/fab_margin"
+            android:text="@string/target_weight" />
+
+    </LinearLayout>
+
+</LinearLayout>
