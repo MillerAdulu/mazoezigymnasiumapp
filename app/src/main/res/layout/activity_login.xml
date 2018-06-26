@@ -27,4 +27,28 @@
         android:text="@string/common_signin_button_text"
         android:onClick="login" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/login_image"
+        />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/show_log_in" />
+
+    <TextView
+        android:id="@+id/token"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/not_logged_in"
+        android:textSize="21sp" />
+
 </LinearLayout>

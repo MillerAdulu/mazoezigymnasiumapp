@@ -42,5 +42,8 @@
     <string name="com_auth0_domain">mazoezi.auth0.com</string>
     <string name="our_awesome_gym_instructor">Our awesome gym instructor</string>
     <string name="profile_picture">Profile Picture</string>
+    <string name="not_logged_in">Not logged in</string>
+    <string name="show_log_in">Show Log in</string>
+    <string name="login_image">Login Image</string>
 
 </resources>
