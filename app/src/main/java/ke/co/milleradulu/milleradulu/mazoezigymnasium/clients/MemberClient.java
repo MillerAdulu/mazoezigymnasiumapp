@@ -27,9 +27,7 @@ public interface MemberClient {
             @Field("last_name") String last_name,
             @Field("age") int age,
             @Field("weight") float weight,
-            @Field("target_weight") float target_weight,
-            @Field("email") String email,
-            @Field("gender") int gender
+            @Field("target_weight") float target_weight
     );
 
     @FormUrlEncoded
