@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "960494376827",
+    "firebase_url": "https://mazoezi-gymnasiu-1528961675138.firebaseio.com",
+    "project_id": "mazoezi-gymnasiu-1528961675138",
+    "storage_bucket": "mazoezi-gymnasiu-1528961675138.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960494376827:android:81607778fa94fa84",
+        "android_client_info": {
+          "package_name": "ke.co.milleradulu.milleradulu.mazoezigymnasium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960494376827-4g3ugc05n3tei699l3tccpn6ra2srk9g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ke.co.milleradulu.milleradulu.mazoezigymnasium",
+            "certificate_hash": "6e19373fb0a6378e0cb113e03f0bfd4595455f35"
+          }
+        },
+        {
+          "client_id": "960494376827-sdgrmkjbajor8cvkm0eeje6etpi1lf4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy3b8g07lJ8QZLjE5E5Rsw4LGMMtSX-2c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960494376827-sdgrmkjbajor8cvkm0eeje6etpi1lf4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
