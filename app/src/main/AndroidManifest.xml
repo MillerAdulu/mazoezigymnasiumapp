@@ -2,42 +2,44 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="ke.co.milleradulu.milleradulu.mazoezigymnasium">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-    <application
-      android:allowBackup="true"
-      android:fullBackupContent="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+  <application
+    android:allowBackup="true"
+    android:fullBackupContent="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity android:name=".MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+      </intent-filter>
+    </activity>
+    <activity android:name=".members.ProfileActivity" />
+    <activity android:name=".gyminstructors.GymInstructorsActivity" />
+    <activity android:name=".gymlocations.GymLocationsActivity" />
+    <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
+    <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
+    <activity android:name=".members.UpdateProfileActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".members.ProfileActivity" />
-        <activity android:name=".gyminstructors.GymInstructorsActivity" />
-        <activity android:name=".gymlocations.GymLocationsActivity" />
-        <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
-        <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
-        <activity android:name=".members.UpdateProfileActivity" />
+    <meta-data
+      android:name="com.google.android.gms.maps"
+      android:value="@integer/google_play_services_version" />
+    <meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="AIzaSyBbIEphLJb1YDP9o8eIv-mu9xqo7s4IGZQ" />
 
-        <meta-data
-          android:name="com.google.android.gms.maps"
-          android:value="@integer/google_play_services_version" />
-        <meta-data
-          android:name="com.google.android.geo.API_KEY"
-          android:value="AIzaSyBbIEphLJb1YDP9o8eIv-mu9xqo7s4IGZQ" />
+    <activity android:name=".members.LoginActivity" >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".members.LoginActivity" />
-        <activity android:name=".members.SignUpActivity" />
-    </application>
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:name=".members.SignUpActivity" />
+  </application>
 
 </manifest>
