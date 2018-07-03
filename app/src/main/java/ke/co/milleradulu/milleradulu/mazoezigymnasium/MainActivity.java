@@ -16,49 +16,57 @@ import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history.Wo
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+  SessionManager sessionManager;
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    
+    sessionManager = new SessionManager(getApplicationContext());
+    sessionManager.checkLogin();
+  }
 
-    public void openProfile(View view) {
-        Intent profileIntent = new Intent(this, ProfileActivity.class);
-        startActivity(profileIntent);
-    }
+  public void openProfile(View view) {
+    Intent profileIntent = new Intent(this, ProfileActivity.class);
+    startActivity(profileIntent);
+  }
 
-    public void openGymInstructors(View view) {
-        Intent gymInstructors = new Intent(this, GymInstructorsActivity.class);
-        startActivity(gymInstructors);
-    }
+  public void openGymInstructors(View view) {
+    Intent gymInstructors = new Intent(this, GymInstructorsActivity.class);
+    startActivity(gymInstructors);
+  }
 
-    public void viewHistory(View view) {
-        Intent sessionHistory = new Intent(this, WorkOutHistoryActivity.class);
-        startActivity(sessionHistory);
-    }
+  public void viewHistory(View view) {
+    Intent sessionHistory = new Intent(this, WorkOutHistoryActivity.class);
+    startActivity(sessionHistory);
+  }
 
-    public void addSession(View view) {
-        Intent addSession = new Intent(this, AddWorkOutSessionActivity.class);
-        startActivity(addSession);
-    }
+  public void addSession(View view) {
+    Intent addSession = new Intent(this, AddWorkOutSessionActivity.class);
+    startActivity(addSession);
+  }
 
-    public void viewGymLocations(View view) {
-        Intent viewGymLocations = new Intent(this, GymLocationsActivity.class);
-        startActivity(viewGymLocations);
-    }
+  public void viewGymLocations(View view) {
+    Intent viewGymLocations = new Intent(this, GymLocationsActivity.class);
+    startActivity(viewGymLocations);
+  }
 
-    public void editProfile(View view) {
-        Intent editProfile = new Intent(this, UpdateProfileActivity.class);
-        startActivity(editProfile);
-    }
+  public void editProfile(View view) {
+    Intent editProfile = new Intent(this, UpdateProfileActivity.class);
+    startActivity(editProfile);
+  }
 
-    public void signUp(View view) {
-        Intent signUp = new Intent(this, SignUpActivity.class);
-        startActivity(signUp);
-    }
+  public void signUp(View view) {
+    Intent signUp = new Intent(this, SignUpActivity.class);
+    startActivity(signUp);
+  }
 
-    public void signIn(View view) {
-        Intent signIn = new Intent(this, LoginActivity.class);
-        startActivity(signIn);
-    }
+  public void signIn(View view) {
+    Intent signIn = new Intent(this, LoginActivity.class);
+    startActivity(signIn);
+  }
+
+  public void logOut(View view) {
+    sessionManager.logOutMember();
+  }
 }

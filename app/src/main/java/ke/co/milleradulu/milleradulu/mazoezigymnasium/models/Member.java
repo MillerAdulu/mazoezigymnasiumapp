@@ -1,71 +1,79 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
 
 public class Member {
-    private String first_name, last_name, email, home;
-    private int age, gender;
-    private float weight, target_weight;
+  private String first_name, last_name, email, home;
+  private int age, gender, id;
+  private float weight, target_weight;
 
-    public String getFirst_name() {
-        return first_name;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getLast_name() {
-        return last_name;
-    }
+  public String getFirst_name() {
+    return first_name;
+  }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
+  public void setFirst_name(String first_name) {
+    this.first_name = first_name;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getLast_name() {
+    return last_name;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setLast_name(String last_name) {
+    this.last_name = last_name;
+  }
 
-    public String getHome() {
-        return home;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setHome(String home) {
-        this.home = home;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public int getAge() {
-        return age;
-    }
+  public String getHome() {
+    return home;
+  }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+  public void setHome(String home) {
+    this.home = home;
+  }
 
-    public int getGender() {
-        return gender;
-    }
+  public int getAge() {
+    return age;
+  }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
+  public void setAge(int age) {
+    this.age = age;
+  }
 
-    public float getWeight() {
-        return weight;
-    }
+  public int getGender() {
+    return gender;
+  }
 
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
+  public void setGender(int gender) {
+    this.gender = gender;
+  }
 
-    public float getTarget_weight() {
-        return target_weight;
-    }
+  public float getWeight() {
+    return weight;
+  }
 
-    public void setTarget_weight(float target_weight) {
-        this.target_weight = target_weight;
-    }
+  public void setWeight(float weight) {
+    this.weight = weight;
+  }
+
+  public float getTarget_weight() {
+    return target_weight;
+  }
+
+  public void setTarget_weight(float target_weight) {
+    this.target_weight = target_weight;
+  }
 }
