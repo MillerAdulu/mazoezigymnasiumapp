@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".workoutsessions.history.WorkOutHistoryActivity">
+
+  <ProgressBar
+    android:id="@+id/progress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"/>
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/session_history_recycler_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".workoutsessions.history.WorkOutHistoryActivity">
+    android:layout_height="wrap_content"
+    android:visibility="invisible"
+    android:scrollbars="vertical" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/session_history_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"/>
-
-</LinearLayout>
+</RelativeLayout>

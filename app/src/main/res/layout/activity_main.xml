@@ -45,13 +45,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="signUp"
-        android:text="@string/sign_up"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="signIn"
-        android:text="@string/common_signin_button_text"/>
+        android:onClick="logOut"
+        android:text="@string/log_out"/>
 
 </LinearLayout>
