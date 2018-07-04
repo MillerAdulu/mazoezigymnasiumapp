@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.Exercise;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.ExerciseClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
@@ -56,7 +57,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
 
   List<String> locations = new ArrayList<>();
   List<String> exercises = new ArrayList<>();
-  ArrayAdapter<String> locationsAdapter, exercisesAdapter;
+  ArrayAdapter<String> locationsAdapter = null, exercisesAdapter = null;
 
   ArrayMap<String, Integer> locationMap = new ArrayMap<>();
   ArrayMap<String, Integer> exerciseMap = new ArrayMap<>();
@@ -72,6 +73,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
     btnAddSession = findViewById(R.id.add_session);
     sessionLocationsSpinner = findViewById(R.id.location_spinner);
     exerciseTypeSpinner = findViewById(R.id.exercise_type_spinner);
+
     addSets = findViewById(R.id.add_sets);
     addReps = findViewById(R.id.add_reps);
     loading = findViewById(R.id.add_session_load);
@@ -82,7 +84,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
         SessionManager.KEY_MEMBER_ID
       )
     );
-    loading.setVisibility(View.VISIBLE);
+    showLoading();
     loadLocationsSpinner();
     loadExercisesSpinner();
   }
@@ -110,8 +112,11 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
 
   public void addSession(View view) {
     hideKeyboard();
+    btnAddSession.setEnabled(false);
     int sets = Integer.parseInt(addSets.getText().toString());
     int reps = Integer.parseInt(addReps.getText().toString());
+
+    showLoading();
 
     WorkOutSessionClient workOutSessionClient = APIServiceProvider.createService(WorkOutSessionClient.class);
     Call<WorkOut> workOutCall = workOutSessionClient.addSession(
@@ -124,61 +129,75 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
       sets,
       member
     );
-    workOutCall.enqueue(new Callback<WorkOut>() {
+
+    APIHelper.enqueWithRetry(workOutCall, 3, new Callback<WorkOut>() {
       @Override
       public void onResponse(@NonNull Call<WorkOut> call, @NonNull Response<WorkOut> response) {
+        Log.d(TAG, response.toString());
         if(response.isSuccessful()) {
-          Toast.makeText(AddWorkOutSessionActivity.this, "Session Added Successfully", Toast.LENGTH_SHORT).show();
+          stopLoading();
+          Toast.makeText(AddWorkOutSessionActivity.this, "Session added successfully!", Toast.LENGTH_SHORT).show();
+          btnAddSession.setEnabled(true);
         }
       }
 
       @Override
       public void onFailure(@NonNull Call<WorkOut> call, @NonNull Throwable t) {
         Log.d(TAG, t.toString());
+        stopLoading();
+        Toast.makeText(AddWorkOutSessionActivity.this, "There was an error adding this session!", Toast.LENGTH_SHORT).show();
+        btnAddSession.setEnabled(true);
       }
     });
+
   }
 
   public void loadLocationsSpinner() {
     GymLocationClient gymLocationClient = APIServiceProvider.createService(GymLocationClient.class);
     Call<List<GymLocation>> gymLocationCall = gymLocationClient.gymLocations();
 
-    gymLocationCall.enqueue(new Callback<List<GymLocation>>() {
+    APIHelper.enqueWithRetry(gymLocationCall, 3, new Callback<List<GymLocation>>() {
       @Override
       public void onResponse(@NonNull Call<List<GymLocation>> call, @NonNull Response<List<GymLocation>> response) {
+        showLoading();
         gymLocationsList = response.body();
         addLocationsToArrayList();
         locationsSpinnerListener();
-        loading.setVisibility(View.GONE);
-        btnAddSession.setEnabled(true);
+        stopLoading();
       }
 
       @Override
       public void onFailure(@NonNull Call<List<GymLocation>> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
+        stopLoading();
+        Toast.makeText(AddWorkOutSessionActivity.this, "There was an error loading gym locations!", Toast.LENGTH_SHORT).show();
       }
     });
+
   }
 
   public void loadExercisesSpinner() {
     ExerciseClient exerciseClient = APIServiceProvider.createService(ExerciseClient.class);
     Call<List<Exercise>> exercisesCall = exerciseClient.exercises();
 
-    exercisesCall.enqueue(new Callback<List<Exercise>>() {
+    APIHelper.enqueWithRetry(exercisesCall, 3, new Callback<List<Exercise>>() {
       @Override
       public void onResponse(@NonNull Call<List<Exercise>> call, @NonNull Response<List<Exercise>> response) {
+        showLoading();
         exerciseTypesList = response.body();
         addExercisesToArrayList();
         exercisesSpinnerListener();
-        loading.setVisibility(View.GONE);
-        btnAddSession.setEnabled(true);
+        stopLoading();
       }
 
       @Override
       public void onFailure(@NonNull Call<List<Exercise>> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
+        stopLoading();
+        Toast.makeText(AddWorkOutSessionActivity.this, "There was an error loading exercises!", Toast.LENGTH_SHORT).show();
       }
     });
+
   }
 
   public void addLocationsToArrayList() {
@@ -235,5 +254,12 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
   void hideKeyboard() {
     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+  }
+
+  void showLoading() {
+    loading.setVisibility(View.VISIBLE);
+  }
+  void stopLoading() {
+    loading.setVisibility(View.GONE);
   }
 }

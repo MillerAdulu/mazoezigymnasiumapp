@@ -13,38 +13,59 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+
     <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
       </intent-filter>
     </activity>
+
     <activity android:name=".members.ProfileActivity"
       android:label="My Profile"
       android:parentActivityName=".MainActivity">
+
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
+
     </activity>
+
     <activity android:name=".gyminstructors.GymInstructorsActivity"
-      android:label="Gym Instructors" android:parentActivityName=".MainActivity">
+      android:label="Gym Instructors"
+      android:parentActivityName=".MainActivity">
+
       <meta-data android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
+
     </activity>
+
     <activity android:name=".gymlocations.GymLocationsActivity"
-      android:label="Gym Network">
+      android:label="Gym Network"
+      android:parentActivityName=".MainActivity">
+
       <meta-data android:name="android.support.PARENT_ACTIVITY"
-        android:value=".MainActivity" />
+        android:value=".MainActivity"/>
+
     </activity>
+
     <activity android:name=".workoutsessions.history.WorkOutHistoryActivity"
-      android:label="Work Out History">
+      android:label="Work Out History"
+      android:parentActivityName=".MainActivity">
+
       <meta-data android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
+
     </activity>
+
     <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity"
-      android:label="Add Session">
+      android:label="Add Session"
+      android:parentActivityName=".MainActivity">
+
       <meta-data android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
+
     </activity>
+
     <activity android:name=".members.UpdateProfileActivity"
       android:label="Update Profile"/>
 
@@ -57,16 +78,25 @@
 
     <activity android:name=".members.LoginActivity"
       android:label="Log In">
+
       <intent-filter>
+
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
+
       </intent-filter>
+
     </activity>
+
     <activity android:name=".members.SignUpActivity"
-      android:label="Sign Up">
+      android:label="Sign Up"
+      android:parentActivityName=".members.LoginActivity">
+
       <meta-data android:name="android.support.PARENT_ACTIVITY"
         android:value=".members.LoginActivity" />
+
     </activity>
+
   </application>
 
 </manifest>

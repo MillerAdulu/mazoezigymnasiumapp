@@ -10,11 +10,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.WorkOut;
@@ -22,6 +24,7 @@ import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.WorkOut
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.addsession.AddWorkOutSessionActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WorkOutHistoryActivity extends AppCompatActivity {
 
@@ -62,9 +65,9 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
       )
     );
 
-    workOutCall.enqueue(new Callback<List<WorkOut>>() {
+    APIHelper.enqueWithRetry(workOutCall, 3, new Callback<List<WorkOut>>() {
       @Override
-      public void onResponse(@NonNull Call<List<WorkOut>> call, @NonNull retrofit2.Response<List<WorkOut>> response) {
+      public void onResponse(@NonNull Call<List<WorkOut>> call, @NonNull Response<List<WorkOut>> response) {
         historyFetch.setVisibility(View.GONE);
         workOuts = response.body();
 
@@ -79,9 +82,16 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
 
       @Override
       public void onFailure(@NonNull Call<List<WorkOut>> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
+        stopLoading();
+        Toast.makeText(
+          WorkOutHistoryActivity.this,
+          "Unable fetch your sessions",
+          Toast.LENGTH_SHORT
+        ).show();
       }
     });
+
 
   }
 
@@ -89,5 +99,9 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
     startActivity(
       new Intent(this, AddWorkOutSessionActivity.class)
     );
+  }
+
+  void stopLoading() {
+    historyFetch.setVisibility(View.GONE);
   }
 }

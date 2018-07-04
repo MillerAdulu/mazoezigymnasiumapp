@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -15,12 +16,14 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.MemberClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.Member;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -58,9 +61,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
     Call<Member> callMemberProfile = memberClient.member(memberId);
-    callMemberProfile.enqueue(new Callback<Member>() {
+
+    APIHelper.enqueWithRetry(callMemberProfile, 3, new Callback<Member>() {
       @Override
-      public void onResponse(@NonNull Call<Member> call, @NonNull retrofit2.Response<Member> response) {
+      public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
         member = response.body();
 
         firstName.setText(member.getFirst_name());
@@ -81,14 +85,28 @@ public class ProfileActivity extends AppCompatActivity {
           .load("https://cdn.pixabay.com/photo/2014/09/25/23/36/man-461195_960_720.jpg")
           .into(profilePicture);
 
-        profileProgress.setVisibility(View.GONE);
+        stopLoading();
       }
 
       @Override
       public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
+        stopLoading();
+        Toast.makeText(
+          ProfileActivity.this,
+          "Unable to load your profile at this moment",
+          Toast.LENGTH_SHORT
+        ).show();
       }
     });
 
+  }
+
+  void showLoading() {
+    profileProgress.setVisibility(View.VISIBLE);
+  }
+
+  void stopLoading() {
+    profileProgress.setVisibility(View.GONE);
   }
 }

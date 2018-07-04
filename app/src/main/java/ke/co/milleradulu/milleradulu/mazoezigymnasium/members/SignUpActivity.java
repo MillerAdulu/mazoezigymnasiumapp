@@ -17,6 +17,7 @@ import java.util.Locale;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.MainActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.Member;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
@@ -86,9 +87,9 @@ public class SignUpActivity extends AppCompatActivity {
       password
     );
 
-    memberCall.enqueue(new Callback<Member>() {
+    APIHelper.enqueWithRetry(memberCall, 3, new Callback<Member>() {
       @Override
-      public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
+      public void onResponse(Call<Member> call, Response<Member> response) {
         Toast.makeText(SignUpActivity.this, R.string.signed_up, Toast.LENGTH_SHORT).show();
         signIn(
           String.format(Locale.ENGLISH, "%d", response.body().getId()),
@@ -98,9 +99,10 @@ public class SignUpActivity extends AppCompatActivity {
 
       @Override
       public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
       }
     });
+
   }
 
   void signIn(String memberId, String lastName) {

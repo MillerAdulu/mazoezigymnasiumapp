@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.GymInstructorClient;
@@ -40,7 +41,7 @@ public class GymInstructorsActivity extends AppCompatActivity {
     sessionManager.checkLogin();
 
     status = findViewById(R.id.instuctors_load);
-    status.setVisibility(View.VISIBLE);
+    showLoading();
 
     gymInstructorsRecyclerView = findViewById(R.id.gym_instructors_recycler_view);
     gymInstructorsRecyclerView.setHasFixedSize(true);
@@ -54,19 +55,28 @@ public class GymInstructorsActivity extends AppCompatActivity {
     GymInstructorClient gymInstructorClient = APIServiceProvider.createService(GymInstructorClient.class);
     Call<List<GymInstructor>> gymInstructorCall = gymInstructorClient.gymInstructors();
 
-    gymInstructorCall.enqueue(new Callback<List<GymInstructor>>() {
+    APIHelper.enqueWithRetry(gymInstructorCall, 3, new Callback<List<GymInstructor>>() {
       @Override
       public void onResponse(@NonNull Call<List<GymInstructor>> call, @NonNull Response<List<GymInstructor>> response) {
         gymInstructors = response.body();
         gymInstructorsAdapter = new GymInstructorAdapter(gymInstructors, GymInstructorsActivity.this);
         gymInstructorsRecyclerView.setAdapter(gymInstructorsAdapter);
-        status.setVisibility(View.GONE);
+        stopLoading();
       }
 
       @Override
       public void onFailure(@NonNull Call<List<GymInstructor>> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
       }
     });
+
+  }
+
+  void showLoading() {
+    status.setVisibility(View.VISIBLE);
+  }
+
+  void stopLoading() {
+    status.setVisibility(View.GONE);
   }
 }

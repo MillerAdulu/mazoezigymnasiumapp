@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.MainActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
@@ -106,40 +108,50 @@ public class LoginActivity extends AppCompatActivity {
 //        }
 //
         MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
-        load.setVisibility(View.VISIBLE);
+
         Call<Member> memberCall = memberClient.login(
                 email,
                 password
         );
 
-        memberCall.enqueue(new Callback<Member>() {
-            @Override
-            public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
-                if(response.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this,
-                            "Logged in successfully " + response.body().getLast_name(),
-                            Toast.LENGTH_SHORT
-                    ).show();
+        showLoading();
 
-                    sessionManager.createLoginSession(
-                      String.format(Locale.ENGLISH, "%d", response.body().getId()),
-                      response.body().getLast_name()
+    APIHelper.enqueWithRetry(memberCall, 3, new Callback<Member>() {
+      @Override
+      public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
+        if(response.isSuccessful()) {
+          Toast.makeText(LoginActivity.this,
+            "Logged in successfully " + response.body().getLast_name(),
+            Toast.LENGTH_SHORT
+          ).show();
 
-                    );
+          sessionManager.createLoginSession(
+            String.format(Locale.ENGLISH, "%d", response.body().getId()),
+            response.body().getLast_name()
 
-                    dashboard();
-                }
-            }
+          );
 
-            @Override
-            public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
+          dashboard();
+        }
+      }
 
-            }
-        });
+      @Override
+      public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
+        Log.d(TAG, t.getMessage());
+        stopLoading();
+
+        Toast.makeText(
+          LoginActivity.this,
+          "Unable to log you in at this moment",
+          Toast.LENGTH_SHORT
+        ).show();
+      }
+    });
+
   }
 
   void dashboard() {
-    load.setVisibility(View.GONE);
+    stopLoading();
     startActivity(
       new Intent(LoginActivity.this, MainActivity.class)
     );
@@ -148,4 +160,13 @@ public class LoginActivity extends AppCompatActivity {
     Intent signUp = new Intent(this, SignUpActivity.class);
     startActivity(signUp);
   }
+
+  void showLoading() {
+    load.setVisibility(View.VISIBLE);
+  }
+
+  void stopLoading() {
+    load.setVisibility(View.GONE);
+  }
+
 }

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -37,6 +38,7 @@ import com.google.android.gms.tasks.Task;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.GymLocationClient;
@@ -89,13 +91,14 @@ public class GymLocationsActivity extends AppCompatActivity implements OnMapRead
     setContentView(R.layout.activity_gym_locations);
 
     mapProgress = findViewById(R.id.progress);
-    mapProgress.setVisibility(View.VISIBLE);
+    mapProgress.bringToFront();
+    showLoading();
 
 
     GymLocationClient gymLocationClient = APIServiceProvider.createService(GymLocationClient.class);
     Call<List<GymLocation>> gymLocationCall = gymLocationClient.gymLocations();
 
-    gymLocationCall.enqueue(new Callback<List<GymLocation>>() {
+    APIHelper.enqueWithRetry(gymLocationCall, 3, new Callback<List<GymLocation>>() {
       @Override
       public void onResponse(@NonNull Call<List<GymLocation>> call, @NonNull Response<List<GymLocation>> response) {
         gymLocations = response.body();
@@ -110,14 +113,20 @@ public class GymLocationsActivity extends AppCompatActivity implements OnMapRead
 
       @Override
       public void onFailure(@NonNull Call<List<GymLocation>> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
+        stopLoading();
+        Toast.makeText(
+          GymLocationsActivity.this,
+          "Unable to load the map at this moment",
+          Toast.LENGTH_SHORT
+        ).show();
       }
     });
+
   }
 
   @Override
   public void onMapReady(GoogleMap googleMap) {
-
     gymMap = googleMap;
 
     for (GymLocation gymLocation : gymLocations) {
@@ -148,7 +157,7 @@ public class GymLocationsActivity extends AppCompatActivity implements OnMapRead
     getLocationPermission();
     updateLocationUI();
     getDeviceLocation();
-    mapProgress.setVisibility(View.GONE);
+    stopLoading();
   }
 
   private void getDeviceLocation() {
@@ -331,5 +340,11 @@ public class GymLocationsActivity extends AppCompatActivity implements OnMapRead
     updateLocationUI();
   }
 
+  void showLoading() {
+    mapProgress.setVisibility(View.VISIBLE);
+  }
 
+  void stopLoading() {
+    mapProgress.setVisibility(View.GONE);
+  }
 }

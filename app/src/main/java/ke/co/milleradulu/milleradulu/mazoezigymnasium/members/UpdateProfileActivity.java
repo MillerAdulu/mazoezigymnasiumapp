@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Locale;
 
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.MainActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
@@ -69,7 +70,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         member = response.body();
         Log.d(TAG, member.toString());
         setValues();
-        profileUpdate.setVisibility(View.GONE);
+        stopLoading();
         updateProfile.setEnabled(true);
 
       }
@@ -77,6 +78,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
       @Override
       public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
         Log.d(TAG, t.toString());
+        Toast.makeText(
+          UpdateProfileActivity.this,
+          "Unable to load your text at this moment",
+          Toast.LENGTH_SHORT
+        ).show();
+        stopLoading();
       }
     });
   }
@@ -115,6 +122,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
     weight = Float.parseFloat(weightText.getText().toString());
     target_weight = Float.parseFloat(targetWeight.getText().toString());
 
+    showLoading();
+
     Call<Member> memberCall = memberClient.update(
       Integer.parseInt(
         memberData.get(
@@ -128,14 +137,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
       target_weight
     );
 
-    memberCall.enqueue(new Callback<Member>() {
+    APIHelper.enqueWithRetry(memberCall, 3, new Callback<Member>() {
       @Override
       public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
         if(response.isSuccessful()) {
+          stopLoading();
           Toast.makeText(UpdateProfileActivity.this,
             "Successful Update",
-            Toast.LENGTH_SHORT)
-            .show();
+            Toast.LENGTH_SHORT
+          ).show();
           Intent dashboard = new Intent(UpdateProfileActivity.this, MainActivity.class);
           startActivity(dashboard);
         } else {
@@ -145,7 +155,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
       @Override
       public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
-        Log.d(TAG, t.toString());
+        Log.d(TAG, t.getMessage());
+        stopLoading();
+        Toast.makeText(
+          UpdateProfileActivity.this,
+          "Unable to update your profile at this moment",
+          Toast.LENGTH_SHORT
+        ).show();
       }
     });
   }
@@ -153,5 +169,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
   void hideKeyboard() {
     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+  }
+
+  void stopLoading() {
+    profileUpdate.setVisibility(View.GONE);
+  }
+
+  void showLoading() {
+    profileUpdate.setVisibility(View.VISIBLE);
   }
 }
