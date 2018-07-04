@@ -1,22 +1,22 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models;
 
 public class Exercise {
-    private int id;
-    private String name;
+    private int exerciseId;
+    private String exerciseName;
 
-    public int getId() {
-        return id;
+    public int getExerciseId() {
+        return exerciseId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setExerciseId(int exerciseId) {
+        this.exerciseId = exerciseId;
     }
 
-    public String getName() {
-        return name;
+    public String getExerciseName() {
+        return exerciseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setExerciseName(String exerciseName) {
+        this.exerciseName = exerciseName;
     }
 }

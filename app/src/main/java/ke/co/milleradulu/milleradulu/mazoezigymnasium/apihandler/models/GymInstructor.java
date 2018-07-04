@@ -1,37 +1,37 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models;
 
 public class GymInstructor {
-    private String names, email, gender, photo;
+    private String instructorNames, instructorEmail, instructorGender, instructorPhoto;
 
-    public String getNames() {
-        return names;
+    public String getInstructorNames() {
+        return instructorNames;
     }
 
-    public void setNames(String names) {
-        this.names = names;
+    public void setInstructorNames(String instructorNames) {
+        this.instructorNames = instructorNames;
     }
 
-    public String getEmail() {
-        return email;
+    public String getInstructorEmail() {
+        return instructorEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setInstructorEmail(String instructorEmail) {
+        this.instructorEmail = instructorEmail;
     }
 
-    public String getGender() {
-        return gender;
+    public String getInstructorGender() {
+        return instructorGender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setInstructorGender(String instructorGender) {
+        this.instructorGender = instructorGender;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setInstructorPhoto(String instructorPhoto) {
+        this.instructorPhoto = instructorPhoto;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getInstructorPhoto() {
+        return instructorPhoto;
     }
 }

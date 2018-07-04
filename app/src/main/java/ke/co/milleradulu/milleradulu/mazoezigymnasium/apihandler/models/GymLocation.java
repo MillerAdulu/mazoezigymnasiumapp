@@ -1,54 +1,54 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models;
 
 public class GymLocation {
-    private int id;
-    private String location, opening_time, closing_time, longitude, latitude;
+    private int gymId;
+    private String gymLocation, openingTime, closingTime, gymLatitude, gymLongitude;
 
-    public int getId() {
-        return id;
+    public int getGymId() {
+        return gymId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setGymId(int gymId) {
+        this.gymId = gymId;
     }
 
-    public String getLocation() {
-        return location;
+    public String getGymLocation() {
+        return gymLocation;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setGymLocation(String gymLocation) {
+        this.gymLocation = gymLocation;
     }
 
-    public String getOpening_time() {
-        return opening_time;
+    public String getOpeningTime() {
+        return openingTime;
     }
 
-    public void setOpening_time(String opening_time) {
-        this.opening_time = opening_time;
+    public void setOpeningTime(String openingTime) {
+        this.openingTime = openingTime;
     }
 
-    public String getClosing_time() {
-        return closing_time;
+    public String getClosingTime() {
+        return closingTime;
     }
 
-    public void setClosing_time(String closing_time) {
-        this.closing_time = closing_time;
+    public void setClosingTime(String closingTime) {
+        this.closingTime = closingTime;
     }
 
-    public String getLongitude() {
-        return longitude;
+    public String getGymLatitude() {
+        return gymLatitude;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setGymLatitude(String gymLatitude) {
+        this.gymLatitude = gymLatitude;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getGymLongitude() {
+        return gymLongitude;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setGymLongitude(String gymLongitude) {
+        this.gymLongitude = gymLongitude;
     }
 }

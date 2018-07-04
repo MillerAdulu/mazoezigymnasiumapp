@@ -203,15 +203,15 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
   public void addLocationsToArrayList() {
 
     for (GymLocation gymLocation : gymLocationsList ) {
-      locations.add(gymLocation.getLocation());
-      locationMap.put(gymLocation.getLocation(), gymLocation.getId());
+      locations.add(gymLocation.getGymLocation());
+      locationMap.put(gymLocation.getGymLocation(), gymLocation.getGymId());
     }
   }
 
   public void addExercisesToArrayList() {
     for(Exercise exercise : exerciseTypesList) {
-      exercises.add(exercise.getName());
-      exerciseMap.put(exercise.getName(), exercise.getId());
+      exercises.add(exercise.getExerciseName());
+      exerciseMap.put(exercise.getExerciseName(), exercise.getExerciseId());
     }
   }
 

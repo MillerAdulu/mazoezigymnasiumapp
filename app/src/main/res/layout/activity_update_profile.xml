@@ -20,13 +20,13 @@
       android:id="@+id/first_name_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/first_name" />
+      android:text="@string/memberFirstName" />
 
     <EditText
       android:id="@+id/firstName"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="@string/first_name"
+      android:hint="@string/memberFirstName"
       android:inputType="textPersonName" />
 
   </LinearLayout>
@@ -40,13 +40,13 @@
       android:id="@+id/last_name_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/last_name" />
+      android:text="@string/memberLastName" />
 
     <EditText
       android:id="@+id/lastName"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="@string/last_name"
+      android:hint="@string/memberLastName"
       android:inputType="textPersonName" />
 
   </LinearLayout>
@@ -60,13 +60,13 @@
       android:id="@+id/age_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/age" />
+      android:text="@string/memberAge" />
 
     <EditText
       android:id="@+id/age"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="@string/age"
+      android:hint="@string/memberAge"
       android:inputType="number" />
 
   </LinearLayout>
@@ -80,13 +80,13 @@
       android:id="@+id/weight_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/weight" />
+      android:text="@string/memberWeight" />
 
     <EditText
       android:id="@+id/weight"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="@string/weight"
+      android:hint="@string/memberWeight"
       android:inputType="numberDecimal" />
 
   </LinearLayout>
@@ -100,13 +100,13 @@
       android:id="@+id/target_weight_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/target_weight" />
+      android:text="@string/memberTargetWeight" />
 
     <EditText
       android:id="@+id/targetWeight"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="@string/target_weight"
+      android:hint="@string/memberTargetWeight"
       android:inputType="numberDecimal" />
 
   </LinearLayout>

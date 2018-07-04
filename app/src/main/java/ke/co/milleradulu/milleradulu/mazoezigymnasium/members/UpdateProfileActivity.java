@@ -89,27 +89,27 @@ public class UpdateProfileActivity extends AppCompatActivity {
   }
 
   private void setValues() {
-    firstName.setText(member.getFirst_name());
-    lastName.setText(member.getLast_name());
+    firstName.setText(member.getMemberFirstName());
+    lastName.setText(member.getMemberLastName());
     ageText.setText(
       String.format(
         Locale.ENGLISH,
         "%d",
-        member.getAge()
+        member.getMemberAge()
       )
     );
     weightText.setText(
       String.format(
         Locale.ENGLISH,
         "%.2f",
-        member.getWeight()
+        member.getMemberWeight()
       )
     );
     targetWeight.setText(
       String.format(
         Locale.ENGLISH,
         "%.2f",
-        member.getTarget_weight()
+        member.getMemberTargetWeight()
       )
     );
   }

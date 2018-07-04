@@ -92,8 +92,8 @@ public class SignUpActivity extends AppCompatActivity {
       public void onResponse(Call<Member> call, Response<Member> response) {
         Toast.makeText(SignUpActivity.this, R.string.signed_up, Toast.LENGTH_SHORT).show();
         signIn(
-          String.format(Locale.ENGLISH, "%d", response.body().getId()),
-          response.body().getLast_name()
+          String.format(Locale.ENGLISH, "%d", response.body().getMemberId()),
+          response.body().getMemberLastName()
         );
       }
 

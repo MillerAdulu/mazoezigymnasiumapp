@@ -1,79 +1,79 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models;
 
 public class Member {
-  private String first_name, last_name, email, home;
-  private int age, gender, id;
-  private float weight, target_weight;
+  private String memberFirstName, memberLastName, memberEmail, memberHome;
+  private int memberAge, memberGender, memberId;
+  private float memberWeight, memberTargetWeight;
 
-  public int getId() {
-    return id;
+  public int getMemberId() {
+    return memberId;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public void setMemberId(int memberId) {
+    this.memberId = memberId;
   }
 
-  public String getFirst_name() {
-    return first_name;
+  public String getMemberFirstName() {
+    return memberFirstName;
   }
 
-  public void setFirst_name(String first_name) {
-    this.first_name = first_name;
+  public void setMemberFirstName(String memberFirstName) {
+    this.memberFirstName = memberFirstName;
   }
 
-  public String getLast_name() {
-    return last_name;
+  public String getMemberLastName() {
+    return memberLastName;
   }
 
-  public void setLast_name(String last_name) {
-    this.last_name = last_name;
+  public void setMemberLastName(String memberLastName) {
+    this.memberLastName = memberLastName;
   }
 
-  public String getEmail() {
-    return email;
+  public String getMemberEmail() {
+    return memberEmail;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setMemberEmail(String memberEmail) {
+    this.memberEmail = memberEmail;
   }
 
-  public String getHome() {
-    return home;
+  public String getMemberHome() {
+    return memberHome;
   }
 
-  public void setHome(String home) {
-    this.home = home;
+  public void setMemberHome(String memberHome) {
+    this.memberHome = memberHome;
   }
 
-  public int getAge() {
-    return age;
+  public int getMemberAge() {
+    return memberAge;
   }
 
-  public void setAge(int age) {
-    this.age = age;
+  public void setMemberAge(int memberAge) {
+    this.memberAge = memberAge;
   }
 
-  public int getGender() {
-    return gender;
+  public int getMemberGender() {
+    return memberGender;
   }
 
-  public void setGender(int gender) {
-    this.gender = gender;
+  public void setMemberGender(int memberGender) {
+    this.memberGender = memberGender;
   }
 
-  public float getWeight() {
-    return weight;
+  public float getMemberWeight() {
+    return memberWeight;
   }
 
-  public void setWeight(float weight) {
-    this.weight = weight;
+  public void setMemberWeight(float memberWeight) {
+    this.memberWeight = memberWeight;
   }
 
-  public float getTarget_weight() {
-    return target_weight;
+  public float getMemberTargetWeight() {
+    return memberTargetWeight;
   }
 
-  public void setTarget_weight(float target_weight) {
-    this.target_weight = target_weight;
+  public void setMemberTargetWeight(float memberTargetWeight) {
+    this.memberTargetWeight = memberTargetWeight;
   }
 }

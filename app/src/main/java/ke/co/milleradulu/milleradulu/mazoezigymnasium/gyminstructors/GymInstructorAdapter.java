@@ -53,10 +53,10 @@ public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdap
 
     @Override
     public void onBindViewHolder(@NonNull GymInstructorViewHolder holder, int position) {
-        holder.names.setText(gymInstructorList.get(position).getNames());
-        holder.email.setText(gymInstructorList.get(position).getEmail());
+        holder.names.setText(gymInstructorList.get(position).getInstructorNames());
+        holder.email.setText(gymInstructorList.get(position).getInstructorEmail());
         holder.gender.setText(
-                gymInstructorList.get(position).getGender().equals("0") ? "Male" : "Female"
+                gymInstructorList.get(position).getInstructorGender().equals("0") ? "Male" : "Female"
         );
 
         Glide.with(instructorContext)

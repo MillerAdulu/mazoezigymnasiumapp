@@ -59,6 +59,19 @@ public class ProfileActivity extends AppCompatActivity {
     profileProgress = findViewById(R.id.profile_load);
 
 
+    fetchProfile();
+
+  }
+
+  void showLoading() {
+    profileProgress.setVisibility(View.VISIBLE);
+  }
+
+  void stopLoading() {
+    profileProgress.setVisibility(View.GONE);
+  }
+
+  void fetchProfile() {
     MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
     Call<Member> callMemberProfile = memberClient.member(memberId);
 
@@ -67,19 +80,19 @@ public class ProfileActivity extends AppCompatActivity {
       public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
         member = response.body();
 
-        firstName.setText(member.getFirst_name());
-        lastName.setText(member.getLast_name());
-        email.setText(member.getEmail());
+        firstName.setText(member.getMemberFirstName());
+        lastName.setText(member.getMemberLastName());
+        email.setText(member.getMemberEmail());
 
-        if(member.getGender() == 0) {
+        if(member.getMemberGender() == 0) {
           gender.setText(R.string.male_gender);
         } else {
           gender.setText(R.string.female_gender);
         }
 
-        age.setText(String.format(Locale.ENGLISH ,"%d", member.getAge()));
-        weight.setText(String.format(Locale.ENGLISH ,"%.2f", member.getWeight()));
-        target_weight.setText(String.format(Locale.ENGLISH ,"%.2f", member.getTarget_weight()));
+        age.setText(String.format(Locale.ENGLISH ,"%d", member.getMemberAge()));
+        weight.setText(String.format(Locale.ENGLISH ,"%.2f", member.getMemberWeight()));
+        target_weight.setText(String.format(Locale.ENGLISH ,"%.2f", member.getMemberTargetWeight()));
 
         Glide.with(ProfileActivity.this)
           .load("https://cdn.pixabay.com/photo/2014/09/25/23/36/man-461195_960_720.jpg")
@@ -99,14 +112,5 @@ public class ProfileActivity extends AppCompatActivity {
         ).show();
       }
     });
-
-  }
-
-  void showLoading() {
-    profileProgress.setVisibility(View.VISIBLE);
-  }
-
-  void stopLoading() {
-    profileProgress.setVisibility(View.GONE);
   }
 }

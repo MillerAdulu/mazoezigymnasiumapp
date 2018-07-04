@@ -1,45 +1,45 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models;
 
 public class WorkOut {
-    private String date, location, exercise_type, reps, sets;
+    private String sessionDate, sessionLocation, exerciseType, exerciseReps, exerciseSets;
 
-    public String getDate() {
-        return date;
+    public String getSessionDate() {
+        return sessionDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSessionDate(String sessionDate) {
+        this.sessionDate = sessionDate;
     }
 
-    public String getLocation() {
-        return location;
+    public String getSessionLocation() {
+        return sessionLocation;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setSessionLocation(String sessionLocation) {
+        this.sessionLocation = sessionLocation;
     }
 
-    public String getExercise_type() {
-        return exercise_type;
+    public String getExerciseType() {
+        return exerciseType;
     }
 
-    public void setExercise_type(String exercise_type) {
-        this.exercise_type = exercise_type;
+    public void setExerciseType(String exerciseType) {
+        this.exerciseType = exerciseType;
     }
 
-    public String getReps() {
-        return reps;
+    public String getExerciseReps() {
+        return exerciseReps;
     }
 
-    public void setReps(String reps) {
-        this.reps = reps;
+    public void setExerciseReps(String exerciseReps) {
+        this.exerciseReps = exerciseReps;
     }
 
-    public String getSets() {
-        return sets;
+    public String getExerciseSets() {
+        return exerciseSets;
     }
 
-    public void setSets(String sets) {
-        this.sets = sets;
+    public void setExerciseSets(String exerciseSets) {
+        this.exerciseSets = exerciseSets;
     }
 }

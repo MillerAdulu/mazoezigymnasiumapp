@@ -121,13 +121,13 @@ public class LoginActivity extends AppCompatActivity {
       public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
         if(response.isSuccessful()) {
           Toast.makeText(LoginActivity.this,
-            "Logged in successfully " + response.body().getLast_name(),
+            "Logged in successfully " + response.body().getMemberLastName(),
             Toast.LENGTH_SHORT
           ).show();
 
           sessionManager.createLoginSession(
-            String.format(Locale.ENGLISH, "%d", response.body().getId()),
-            response.body().getLast_name()
+            String.format(Locale.ENGLISH, "%d", response.body().getMemberId()),
+            response.body().getMemberLastName()
 
           );
 

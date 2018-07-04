@@ -2,6 +2,7 @@ package ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -49,6 +50,7 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
 
     member = sessionManager.getMemberDetails();
     historyFetch = findViewById(R.id.progress);
+
     historyFetch.setVisibility(View.VISIBLE);
     workOutHistoryRecyclerView = findViewById(R.id.session_history_recycler_view);
     workOutHistoryRecyclerView.setHasFixedSize(true);
@@ -56,6 +58,10 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
     RecyclerView.LayoutManager workOutsLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     workOutHistoryRecyclerView.setLayoutManager(workOutsLayoutManager);
 
+    fetchHistory();
+  }
+
+  void fetchHistory() {
     WorkOutSessionClient workOutSessionClient = APIServiceProvider.createService(WorkOutSessionClient.class);
     Call<List<WorkOut>> workOutCall = workOutSessionClient.workOutSessions(
       Integer.parseInt(
@@ -92,9 +98,7 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
       }
     });
 
-
   }
-
   public void addSession(View view) {
     startActivity(
       new Intent(this, AddWorkOutSessionActivity.class)

@@ -10,21 +10,21 @@
     android:id="@+id/signUpFirstName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="@string/first_name"
+    android:hint="@string/memberFirstName"
     android:inputType="textPersonName" />
 
   <EditText
     android:id="@+id/signUpLastName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="@string/last_name"
+    android:hint="@string/memberLastName"
     android:inputType="textPersonName" />
 
   <EditText
     android:id="@+id/signUpEmailAddress"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="@string/email"
+    android:hint="@string/instructorEmail"
     android:inputType="textEmailAddress" />
 
   <EditText

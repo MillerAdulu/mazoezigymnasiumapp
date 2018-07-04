@@ -135,16 +135,16 @@ public class GymLocationsActivity extends AppCompatActivity implements OnMapRead
         new MarkerOptions()
           .position(
             new LatLng(
-              Double.parseDouble(gymLocation.getLatitude()),
-              Double.parseDouble(gymLocation.getLongitude())
+              Double.parseDouble(gymLocation.getGymLongitude()),
+              Double.parseDouble(gymLocation.getGymLatitude())
             )
           )
           .title(
-            gymLocation.getLocation()
+            gymLocation.getGymLocation()
           )
           .snippet(
-            "Opening Time: " + gymLocation.getOpening_time() + "\n" +
-              "Closing Time: " + gymLocation.getClosing_time()
+            "Opening Time: " + gymLocation.getOpeningTime() + "\n" +
+              "Closing Time: " + gymLocation.getClosingTime()
           )
           .icon(
             BitmapDescriptorFactory.fromResource(
