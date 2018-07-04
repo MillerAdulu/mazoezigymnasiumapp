@@ -1,90 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/session_date_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_date"
-        android:layout_marginHorizontal="@dimen/fab_margin" />
+      android:id="@+id/session_date_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_date" />
 
     <TextView
-        android:id="@+id/session_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_date"
-        android:layout_toEndOf="@id/session_date_label"
-        android:layout_marginHorizontal="@dimen/fab_margin" />
+      android:id="@+id/session_date"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_date" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/session_location_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_location"
-        android:layout_below="@id/session_date_label"
-        android:layout_marginHorizontal="@dimen/fab_margin"/>
+      android:id="@+id/session_location_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_location" />
 
     <TextView
-        android:id="@+id/session_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_location"
-        android:layout_toEndOf="@id/session_location_label"
-        android:layout_below="@id/session_date"
-        android:layout_marginHorizontal="@dimen/fab_margin" />
+      android:id="@+id/session_location"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_location" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/session_exercise_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_exercise"
-        android:layout_below="@id/session_location_label"
-        android:layout_marginHorizontal="@dimen/fab_margin"/>
+      android:id="@+id/session_exercise_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_exercise" />
+
 
     <TextView
-        android:id="@+id/session_exercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_exercise"
-        android:layout_toEndOf="@id/session_exercise_label"
-        android:layout_below="@id/session_location"
-        android:layout_marginHorizontal="@dimen/fab_margin" />
+      android:id="@+id/session_exercise"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_exercise" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/session_reps_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_reps"
-        android:layout_below="@id/session_exercise_label"
-        android:layout_marginHorizontal="@dimen/fab_margin"/>
+      android:id="@+id/session_reps_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_reps" />
 
     <TextView
-        android:id="@+id/session_reps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_reps"
-        android:layout_toEndOf="@id/session_reps_label"
-        android:layout_below="@id/session_exercise"
-        android:layout_marginHorizontal="@dimen/fab_margin" />
+      android:id="@+id/session_reps"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_reps" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/session_sets_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_sets"
-        android:layout_below="@id/session_reps_label"
-        android:layout_marginHorizontal="@dimen/fab_margin"/>
+      android:id="@+id/session_sets_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_sets" />
 
     <TextView
-        android:id="@+id/session_sets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/session_sets"
-        android:layout_toEndOf="@id/session_sets_label"
-        android:layout_below="@id/session_reps"
-        android:layout_marginHorizontal="@dimen/fab_margin" />
+      android:id="@+id/session_sets"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/fab_margin"
+      android:text="@string/session_sets" />
 
-</RelativeLayout>
+  </LinearLayout>
+</LinearLayout>
