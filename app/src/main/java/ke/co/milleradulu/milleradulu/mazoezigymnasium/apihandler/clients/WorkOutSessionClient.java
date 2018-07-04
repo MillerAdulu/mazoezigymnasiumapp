@@ -1,8 +1,8 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.clients;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients;
 
 import java.util.List;
 
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.WorkOut;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.WorkOut;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

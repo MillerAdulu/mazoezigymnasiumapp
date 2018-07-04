@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.WorkOut;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.WorkOut;
 
 public class WorkOutAdapter extends RecyclerView.Adapter<WorkOutAdapter.WorkOutViewHolder> {
 

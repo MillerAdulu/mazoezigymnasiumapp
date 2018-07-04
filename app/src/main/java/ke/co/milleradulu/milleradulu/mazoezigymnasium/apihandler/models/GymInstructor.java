@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models;
 
 public class GymInstructor {
     private String names, email, gender, photo;

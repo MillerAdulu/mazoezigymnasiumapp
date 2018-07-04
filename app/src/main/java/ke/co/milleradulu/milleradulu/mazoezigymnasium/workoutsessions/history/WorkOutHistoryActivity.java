@@ -1,5 +1,6 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,15 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.WorkOut;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.WorkOutSessionClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.WorkOut;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.WorkOutSessionClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.addsession.AddWorkOutSessionActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -29,6 +32,7 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
   List<WorkOut> workOuts;
   ProgressBar historyFetch;
   HashMap<String, String> member;
+  TextView noSessions;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
 
     sessionManager = new SessionManager(getApplicationContext());
     sessionManager.checkLogin();
+
+    noSessions = findViewById(R.id.no_sessions);
 
     member = sessionManager.getMemberDetails();
     historyFetch = findViewById(R.id.progress);
@@ -61,6 +67,11 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
       public void onResponse(@NonNull Call<List<WorkOut>> call, @NonNull retrofit2.Response<List<WorkOut>> response) {
         historyFetch.setVisibility(View.GONE);
         workOuts = response.body();
+
+        if(workOuts.size() == 0) {
+          noSessions.setVisibility(View.VISIBLE);
+        }
+
         workOutHistoryAdapter = new WorkOutAdapter(workOuts);
         workOutHistoryRecyclerView.setAdapter(workOutHistoryAdapter);
         workOutHistoryRecyclerView.setVisibility(View.VISIBLE);
@@ -72,5 +83,11 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
       }
     });
 
+  }
+
+  public void addSession(View view) {
+    startActivity(
+      new Intent(this, AddWorkOutSessionActivity.class)
+    );
   }
 }

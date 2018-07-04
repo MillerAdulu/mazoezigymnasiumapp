@@ -1,4 +1,4 @@
-package ke.co.milleradulu.milleradulu.mazoezigymnasium.models;
+package ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models;
 
 public class Member {
   private String first_name, last_name, email, home;
