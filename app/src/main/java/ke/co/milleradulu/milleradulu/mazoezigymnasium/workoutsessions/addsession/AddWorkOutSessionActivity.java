@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -48,6 +49,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
   HashMap<String, String> memberData;
   private int exercise_type;
   EditText addSets, addReps, sessionDate;
+  Button btnAddSession;
   List<GymLocation> gymLocationsList;
   List<Exercise> exerciseTypesList;
   Spinner sessionLocationsSpinner, exerciseTypeSpinner;
@@ -67,6 +69,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
     sessionManager = new SessionManager(getApplicationContext());
     sessionManager.checkLogin();
 
+    btnAddSession = findViewById(R.id.add_session);
     sessionLocationsSpinner = findViewById(R.id.location_spinner);
     exerciseTypeSpinner = findViewById(R.id.exercise_type_spinner);
     addSets = findViewById(R.id.add_sets);
@@ -146,6 +149,8 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
         gymLocationsList = response.body();
         addLocationsToArrayList();
         locationsSpinnerListener();
+        loading.setVisibility(View.GONE);
+        btnAddSession.setEnabled(true);
       }
 
       @Override
@@ -166,6 +171,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
         addExercisesToArrayList();
         exercisesSpinnerListener();
         loading.setVisibility(View.GONE);
+        btnAddSession.setEnabled(true);
       }
 
       @Override

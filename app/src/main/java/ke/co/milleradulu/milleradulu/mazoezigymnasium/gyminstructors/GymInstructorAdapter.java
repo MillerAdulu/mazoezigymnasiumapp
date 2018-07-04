@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.GymInstructor;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.GymInstructor;
 
 public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdapter.GymInstructorViewHolder> {
 

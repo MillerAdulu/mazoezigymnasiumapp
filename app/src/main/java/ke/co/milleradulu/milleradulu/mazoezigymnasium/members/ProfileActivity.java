@@ -11,15 +11,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Locale;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.MemberClient;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.Member;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.MemberClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.Member;
 import retrofit2.Call;
 import retrofit2.Callback;
 

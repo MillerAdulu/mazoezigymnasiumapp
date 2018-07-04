@@ -13,10 +13,10 @@ import android.widget.ProgressBar;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.GymInstructorClient;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.GymInstructor;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.GymInstructorClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.GymInstructor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

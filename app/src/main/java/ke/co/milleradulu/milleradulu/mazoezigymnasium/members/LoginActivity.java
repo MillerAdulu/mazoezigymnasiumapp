@@ -4,26 +4,22 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.ActionCodeSettings;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.APIServiceProvider;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.MainActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.clients.MemberClient;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.models.Member;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.MemberClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.Member;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
