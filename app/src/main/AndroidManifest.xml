@@ -18,12 +18,35 @@
         <action android:name="android.intent.action.VIEW" />
       </intent-filter>
     </activity>
-    <activity android:name=".members.ProfileActivity" />
-    <activity android:name=".gyminstructors.GymInstructorsActivity" />
-    <activity android:name=".gymlocations.GymLocationsActivity" />
-    <activity android:name=".workoutsessions.history.WorkOutHistoryActivity" />
-    <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity" />
-    <activity android:name=".members.UpdateProfileActivity" />
+    <activity android:name=".members.ProfileActivity"
+      android:label="My Profile"
+      android:parentActivityName=".MainActivity">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".MainActivity" />
+    </activity>
+    <activity android:name=".gyminstructors.GymInstructorsActivity"
+      android:label="Gym Instructors" android:parentActivityName=".MainActivity">
+      <meta-data android:name="android.support.PARENT_ACTIVITY"
+        android:value=".MainActivity" />
+    </activity>
+    <activity android:name=".gymlocations.GymLocationsActivity"
+      android:label="Gym Network">
+      <meta-data android:name="android.support.PARENT_ACTIVITY"
+        android:value=".MainActivity" />
+    </activity>
+    <activity android:name=".workoutsessions.history.WorkOutHistoryActivity"
+      android:label="Work Out History">
+      <meta-data android:name="android.support.PARENT_ACTIVITY"
+        android:value=".MainActivity" />
+    </activity>
+    <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity"
+      android:label="Add Session">
+      <meta-data android:name="android.support.PARENT_ACTIVITY"
+        android:value=".MainActivity" />
+    </activity>
+    <activity android:name=".members.UpdateProfileActivity"
+      android:label="Update Profile"/>
 
     <meta-data
       android:name="com.google.android.gms.maps"
@@ -32,14 +55,18 @@
       android:name="com.google.android.geo.API_KEY"
       android:value="AIzaSyBbIEphLJb1YDP9o8eIv-mu9xqo7s4IGZQ" />
 
-    <activity android:name=".members.LoginActivity" >
+    <activity android:name=".members.LoginActivity"
+      android:label="Log In">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
-
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".members.SignUpActivity" />
+    <activity android:name=".members.SignUpActivity"
+      android:label="Sign Up">
+      <meta-data android:name="android.support.PARENT_ACTIVITY"
+        android:value=".members.LoginActivity" />
+    </activity>
   </application>
 
 </manifest>
