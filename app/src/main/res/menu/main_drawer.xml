@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group android:checkableBehavior="single">
+
+    <item
+      android:id="@+id/nav_home"
+      android:icon="@drawable/app_home"
+      android:title="@string/nav_home"/>
+
+    <item
+      android:id="@+id/nav_profile"
+      android:icon="@drawable/app_profile"
+      android:title="@string/nav_profile"/>
+
+    <item
+      android:id="@+id/nav_instructors"
+      android:icon="@drawable/app_instructor"
+      android:title="@string/nav_instructors"/>
+
+    <item
+      android:id="@+id/nav_locations"
+      android:icon="@drawable/app_location"
+      android:title="@string/nav_locations"/>
+
+    <item
+      android:id="@+id/nav_history"
+      android:icon="@drawable/app_history"
+      android:title="@string/nav_history"/>
+
+    <item
+      android:id="@+id/nav_add_session"
+      android:icon="@drawable/add_session"
+      android:title="@string/nav_session"/>
+
+  </group>
+
+  <item
+    android:id="@+id/nav_settings"
+    android:icon="@drawable/app_settings"
+    android:title="@string/nav_settings"/>
+
+</menu>

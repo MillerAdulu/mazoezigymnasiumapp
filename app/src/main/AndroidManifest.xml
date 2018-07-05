@@ -3,7 +3,7 @@
   package="ke.co.milleradulu.milleradulu.mazoezigymnasium">
 
   <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
   <application
     android:allowBackup="true"
@@ -13,61 +13,54 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-
     <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
       </intent-filter>
     </activity>
-
-    <activity android:name=".members.ProfileActivity"
+    <activity
+      android:name=".members.ProfileActivity"
       android:label="My Profile"
       android:parentActivityName=".MainActivity">
-
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
-
     </activity>
-
-    <activity android:name=".gyminstructors.GymInstructorsActivity"
+    <activity
+      android:name=".gyminstructors.GymInstructorsActivity"
       android:label="Gym Instructors"
       android:parentActivityName=".MainActivity">
-
-      <meta-data android:name="android.support.PARENT_ACTIVITY"
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
-
     </activity>
-
-    <activity android:name=".gymlocations.GymLocationsActivity"
+    <activity
+      android:name=".gymlocations.GymLocationsActivity"
       android:label="Gym Network"
       android:parentActivityName=".MainActivity">
-
-      <meta-data android:name="android.support.PARENT_ACTIVITY"
-        android:value=".MainActivity"/>
-
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".MainActivity" />
     </activity>
-
-    <activity android:name=".workoutsessions.history.WorkOutHistoryActivity"
+    <activity
+      android:name=".workoutsessions.history.WorkOutHistoryActivity"
       android:label="Work Out History"
       android:parentActivityName=".MainActivity">
-
-      <meta-data android:name="android.support.PARENT_ACTIVITY"
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
-
     </activity>
-
-    <activity android:name=".workoutsessions.addsession.AddWorkOutSessionActivity"
+    <activity
+      android:name=".workoutsessions.addsession.AddWorkOutSessionActivity"
       android:label="Add Session"
       android:parentActivityName=".MainActivity">
-
-      <meta-data android:name="android.support.PARENT_ACTIVITY"
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity" />
-
     </activity>
-
-    <activity android:name=".members.UpdateProfileActivity"
-      android:label="Update Profile"/>
+    <activity
+      android:name=".members.UpdateProfileActivity"
+      android:label="Update Profile" />
 
     <meta-data
       android:name="com.google.android.gms.maps"
@@ -76,27 +69,26 @@
       android:name="com.google.android.geo.API_KEY"
       android:value="AIzaSyBbIEphLJb1YDP9o8eIv-mu9xqo7s4IGZQ" />
 
-    <activity android:name=".members.LoginActivity"
+    <activity
+      android:name=".members.LoginActivity"
       android:label="Log In">
-
       <intent-filter>
-
         <action android:name="android.intent.action.MAIN" />
+
         <category android:name="android.intent.category.LAUNCHER" />
-
       </intent-filter>
-
     </activity>
-
-    <activity android:name=".members.SignUpActivity"
+    <activity
+      android:name=".members.SignUpActivity"
       android:label="Sign Up"
       android:parentActivityName=".members.LoginActivity">
-
-      <meta-data android:name="android.support.PARENT_ACTIVITY"
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
         android:value=".members.LoginActivity" />
-
     </activity>
-
+    <activity
+      android:name=".members.SettingsActivity"
+      android:label="@string/title_activity_settings"></activity>
   </application>
 
 </manifest>

@@ -10,8 +10,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.ActionCodeSettings;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
@@ -34,8 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
   SessionManager sessionManager;
 
-  ActionCodeSettings actionCodeSettings;
-  FirebaseAuth firebaseAuth;
+  private FirebaseAuth firebaseAuth;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -44,25 +47,12 @@ public class LoginActivity extends AppCompatActivity {
 
     load = findViewById(R.id.login_load);
 
+    firebaseAuth = FirebaseAuth.getInstance();
 
     sessionManager = new SessionManager(getApplicationContext());
-//    if(sessionManager.getMemberDetails() != null) {
-//      dashboard();
-//    }
 
     emailAddress = findViewById(R.id.signInEmailAddress);
     loginPassword = findViewById(R.id.signInPassword);
-
-//    actionCodeSettings = ActionCodeSettings
-//      .newBuilder()
-//      .setUrl("https://www.milleradulu.co.ke")
-//      .setHandleCodeInApp(true)
-//      .setIOSBundleId("ke.co.milleradulu.milleradulu.mazoezigymnasium")
-//      .setAndroidPackageName(
-//        "ke.co.milleradulu.milleradulu.mazoezigymnasium",
-//        true,
-//        "24")
-//      .build();
   }
 
   public void login(View view) {
@@ -75,38 +65,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        firebaseAuth.sendSignInLinkToEmail(email, actionCodeSettings)
-//          .addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//              if(task.isSuccessful()) {
-//                Log.d(TAG, "Email Sent");
-//              }
-//            }
-//          });
-//
-//        Intent intent = getIntent();
-//
-//        String emailLink = intent.getData().toString();
-//
-//        if(firebaseAuth.isSignInWithEmailLink(emailLink)){
-//          firebaseAuth.signInWithEmailLink(email, emailLink)
-//            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//              @Override
-//              public void onComplete(@NonNull Task<AuthResult> task) {
-//                if(task.isSuccessful()) {
-//                  Log.d(TAG, "Successfully signed in with email");
-//                  AuthResult authResult = task.getResult();
-//
-//                } else {
-//                  Log.e(TAG, "Error signing in with email link: " + task.getException().getMessage());
-//                }
-//              }
-//            });
-//
-//        }
-//
         MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
 
         Call<Member> memberCall = memberClient.login(
@@ -169,4 +127,35 @@ public class LoginActivity extends AppCompatActivity {
     load.setVisibility(View.GONE);
   }
 
+  @Override
+  protected void onStart() {
+    super.onStart();
+
+    FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+//    updateUI(currentUser);
+  }
+
+  public void createAccount() {
+    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(
+      this,
+      new OnCompleteListener<AuthResult>() {
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+          if(task.isSuccessful()) {
+            Log.d(TAG, "Create user with email: success");
+            FirebaseUser member = firebaseAuth.getCurrentUser();
+//            updateUI(member);
+          } else {
+            Log.w(TAG, "Create user with email: failure ", task.getException());
+            Toast.makeText(
+              LoginActivity.this,
+              "Authentication failed",
+              Toast.LENGTH_SHORT
+            ).show();
+//            updateUI(null);
+          }
+        }
+      }
+    );
+  }
 }

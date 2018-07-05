@@ -9,6 +9,7 @@ import ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors.GymInstruct
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations.GymLocationsActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.LoginActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.ProfileActivity;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.SettingsActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.SignUpActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.UpdateProfileActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.addsession.AddWorkOutSessionActivity;
@@ -64,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
   public void signIn(View view) {
     Intent signIn = new Intent(this, LoginActivity.class);
     startActivity(signIn);
+  }
+
+  public void settings(View view) {
+    Intent settings = new Intent(this, SettingsActivity.class);
+    startActivity(settings);
   }
 
   public void logOut(View view) {
