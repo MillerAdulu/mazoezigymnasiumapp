@@ -1,14 +1,19 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,19 +22,20 @@ import java.util.HashMap;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.WorkOut;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.WorkOutSessionClient;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.WorkOut;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.addsession.AddWorkOutSessionActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WorkOutHistoryActivity extends AppCompatActivity {
+public class WorkOutHistoryFragment extends Fragment {
+  private OnFragmentInteractionListener mListener;
 
-  public static final String TAG = WorkOutHistoryActivity.class.getSimpleName();
+  public static final String TAG = WorkOutHistoryFragment.class.getSimpleName();
   SessionManager sessionManager;
   private RecyclerView workOutHistoryRecyclerView;
   private RecyclerView.Adapter workOutHistoryAdapter;
@@ -37,27 +43,52 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
   ProgressBar historyFetch;
   HashMap<String, String> member;
   TextView noSessions;
+  FloatingActionButton fabAddSession;
+
+  public WorkOutHistoryFragment() {
+  }
+
+  public static WorkOutHistoryFragment newInstance() {
+    return new WorkOutHistoryFragment();
+  }
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_work_out_history);
+  }
 
-    sessionManager = new SessionManager(getApplicationContext());
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_work_out_history, container, false);
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    sessionManager = new SessionManager(getContext());
     sessionManager.checkLogin();
 
-    noSessions = findViewById(R.id.no_sessions);
+    noSessions = view.findViewById(R.id.no_sessions);
 
     member = sessionManager.getMemberDetails();
-    historyFetch = findViewById(R.id.progress);
+    historyFetch = view.findViewById(R.id.progress);
+    fabAddSession = view.findViewById(R.id.fab_add_session);
 
     historyFetch.setVisibility(View.VISIBLE);
-    workOutHistoryRecyclerView = findViewById(R.id.session_history_recycler_view);
+    workOutHistoryRecyclerView = view.findViewById(R.id.session_history_recycler_view);
     workOutHistoryRecyclerView.setHasFixedSize(true);
 
-    RecyclerView.LayoutManager workOutsLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+    RecyclerView.LayoutManager workOutsLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
     workOutHistoryRecyclerView.setLayoutManager(workOutsLayoutManager);
 
+    fabAddSession.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
     fetchHistory();
   }
 
@@ -91,7 +122,7 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
         Log.d(TAG, t.getMessage());
         stopLoading();
         Toast.makeText(
-          WorkOutHistoryActivity.this,
+          getContext(),
           "Unable fetch your sessions",
           Toast.LENGTH_SHORT
         ).show();
@@ -99,13 +130,38 @@ public class WorkOutHistoryActivity extends AppCompatActivity {
     });
 
   }
-  public void addSession(View view) {
-    startActivity(
-      new Intent(this, AddWorkOutSessionActivity.class)
-    );
-  }
+
+
 
   void stopLoading() {
     historyFetch.setVisibility(View.GONE);
+  }
+
+  public void onButtonPressed(Uri uri) {
+    if (mListener != null) {
+      mListener.onFragmentInteraction(uri);
+    }
+  }
+
+  @Override
+  public void onAttach(Context context) {
+    super.onAttach(context);
+    if (context instanceof OnFragmentInteractionListener) {
+      mListener = (OnFragmentInteractionListener) context;
+    } else {
+      throw new RuntimeException(context.toString()
+        + " must implement OnFragmentInteractionListener");
+    }
+  }
+
+  @Override
+  public void onDetach() {
+    super.onDetach();
+    mListener = null;
+  }
+
+  public interface OnFragmentInteractionListener {
+    // TODO: Update argument type and name
+    void onFragmentInteraction(Uri uri);
   }
 }

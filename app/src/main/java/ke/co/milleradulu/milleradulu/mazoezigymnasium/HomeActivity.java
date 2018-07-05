@@ -16,12 +16,14 @@ import android.view.MenuItem;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors.GymInstructorsFragment;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations.GymLocationsFragment;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.ProfileFragment;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history.WorkOutHistoryFragment;
 
 public class HomeActivity extends AppCompatActivity
   implements NavigationView.OnNavigationItemSelectedListener,
   GymLocationsFragment.OnFragmentInteractionListener,
   GymInstructorsFragment.OnFragmentInteractionListener,
-  ProfileFragment.OnFragmentInteractionListener {
+  ProfileFragment.OnFragmentInteractionListener,
+  WorkOutHistoryFragment.OnFragmentInteractionListener {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class HomeActivity extends AppCompatActivity
     } else if (id == R.id.nav_add_session) {
 
     } else if (id == R.id.nav_history) {
-
+      displayWorkOutHistory();
     }
 
     DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -131,6 +133,20 @@ public class HomeActivity extends AppCompatActivity
     fragmentTransaction.add(
       R.id.fragment,
       profileFragment
+    )
+      .addToBackStack(null)
+      .commit();
+  }
+
+  void displayWorkOutHistory() {
+    WorkOutHistoryFragment workOutHistoryFragment = WorkOutHistoryFragment.newInstance();
+
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+    fragmentTransaction.add(
+      R.id.fragment,
+      workOutHistoryFragment
     )
       .addToBackStack(null)
       .commit();
