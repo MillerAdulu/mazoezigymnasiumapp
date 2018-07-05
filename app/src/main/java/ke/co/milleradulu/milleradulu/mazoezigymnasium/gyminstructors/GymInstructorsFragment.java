@@ -74,30 +74,11 @@ public class GymInstructorsFragment extends Fragment {
     gymInstructorsRecyclerView = view.findViewById(R.id.gym_instructors_recycler_view);
     gymInstructorsRecyclerView.setHasFixedSize(true);
 
-
     RecyclerView.LayoutManager gymInstructorsLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
     gymInstructorsRecyclerView.setLayoutManager(gymInstructorsLayoutManager);
     gymInstructorsRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-
-    GymInstructorClient gymInstructorClient = APIServiceProvider.createService(GymInstructorClient.class);
-    Call<List<GymInstructor>> gymInstructorCall = gymInstructorClient.gymInstructors();
-
-    APIHelper.enqueWithRetry(gymInstructorCall, 3, new Callback<List<GymInstructor>>() {
-      @Override
-      public void onResponse(@NonNull Call<List<GymInstructor>> call, @NonNull Response<List<GymInstructor>> response) {
-        gymInstructors = response.body();
-        gymInstructorsAdapter = new GymInstructorAdapter(gymInstructors, getContext());
-        gymInstructorsRecyclerView.setAdapter(gymInstructorsAdapter);
-        stopLoading();
-      }
-
-      @Override
-      public void onFailure(@NonNull Call<List<GymInstructor>> call, @NonNull Throwable t) {
-        Log.d(TAG, t.getMessage());
-      }
-    });
-
+    fetchInstructors();
   }
 
   // TODO: Rename method, update argument and hook method into UI event
@@ -130,6 +111,27 @@ public class GymInstructorsFragment extends Fragment {
 
   void stopLoading() {
     status.setVisibility(View.GONE);
+  }
+
+  void fetchInstructors() {
+    GymInstructorClient gymInstructorClient = APIServiceProvider.createService(GymInstructorClient.class);
+    Call<List<GymInstructor>> gymInstructorCall = gymInstructorClient.gymInstructors();
+
+    APIHelper.enqueWithRetry(gymInstructorCall, 3, new Callback<List<GymInstructor>>() {
+      @Override
+      public void onResponse(@NonNull Call<List<GymInstructor>> call, @NonNull Response<List<GymInstructor>> response) {
+        gymInstructors = response.body();
+        gymInstructorsAdapter = new GymInstructorAdapter(gymInstructors, getContext());
+        gymInstructorsRecyclerView.setAdapter(gymInstructorsAdapter);
+        stopLoading();
+      }
+
+      @Override
+      public void onFailure(@NonNull Call<List<GymInstructor>> call, @NonNull Throwable t) {
+        Log.d(TAG, t.getMessage());
+      }
+    });
+
   }
 
   public interface OnFragmentInteractionListener {
