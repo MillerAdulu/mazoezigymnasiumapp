@@ -19,30 +19,6 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".members.ProfileActivity"
-      android:label="My Profile"
-      android:parentActivityName=".MainActivity">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".MainActivity" />
-    </activity>
-    <activity
-      android:name=".gyminstructors.GymInstructorsActivity"
-      android:label="Gym Instructors"
-      android:parentActivityName=".MainActivity">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".MainActivity" />
-    </activity>
-    <activity
-      android:name=".gymlocations.GymLocationsActivity"
-      android:label="Gym Network"
-      android:parentActivityName=".MainActivity">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".MainActivity" />
-    </activity>
-    <activity
       android:name=".workoutsessions.history.WorkOutHistoryActivity"
       android:label="Work Out History"
       android:parentActivityName=".MainActivity">
@@ -72,11 +48,7 @@
     <activity
       android:name=".members.LoginActivity"
       android:label="Log In">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
     </activity>
     <activity
       android:name=".members.SignUpActivity"
@@ -87,8 +59,18 @@
         android:value=".members.LoginActivity" />
     </activity>
     <activity
-      android:name=".members.SettingsActivity"
-      android:label="@string/title_activity_settings"></activity>
+      android:name=".settings.SettingsActivity"
+      android:label="@string/title_activity_settings" />
+    <activity
+      android:name=".HomeActivity"
+      android:label="@string/title_activity_home"
+      android:theme="@style/AppTheme.NoActionBar">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
   </application>
 
 </manifest>

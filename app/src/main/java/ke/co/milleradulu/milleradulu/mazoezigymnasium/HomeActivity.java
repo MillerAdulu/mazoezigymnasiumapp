@@ -13,10 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors.GymInstructorsFragment;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations.GymLocationsFragment;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.ProfileFragment;
 
 public class HomeActivity extends AppCompatActivity
-  implements NavigationView.OnNavigationItemSelectedListener, GymLocationsFragment.OnFragmentInteractionListener {
+  implements NavigationView.OnNavigationItemSelectedListener,
+  GymLocationsFragment.OnFragmentInteractionListener,
+  GymInstructorsFragment.OnFragmentInteractionListener,
+  ProfileFragment.OnFragmentInteractionListener {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +54,16 @@ public class HomeActivity extends AppCompatActivity
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.home, menu);
     return true;
   }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
 
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
+    return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
-    return super.onOptionsItemSelected(item);
   }
 
   @SuppressWarnings("StatementWithEmptyBody")
@@ -76,14 +73,15 @@ public class HomeActivity extends AppCompatActivity
     int id = item.getItemId();
 
     if (id == R.id.nav_home) {
-      // Handle the camera action
     } else if (id == R.id.nav_profile) {
+      displayProfile();
 
     } else if (id == R.id.nav_locations) {
 
       displayGymLocations();
 
     } else if (id == R.id.nav_instructors) {
+      displayInstructors();
 
     } else if (id == R.id.nav_add_session) {
 
@@ -105,6 +103,34 @@ public class HomeActivity extends AppCompatActivity
     fragmentTransaction.add(
       R.id.fragment,
       gymLocationsFragment
+    )
+      .addToBackStack(null)
+      .commit();
+  }
+
+  private void displayInstructors() {
+    GymInstructorsFragment gymInstructorsFragment = GymInstructorsFragment.newInstance();
+
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+    fragmentTransaction.add(
+      R.id.fragment,
+      gymInstructorsFragment
+    )
+      .addToBackStack(null)
+      .commit();
+  }
+
+  private void displayProfile() {
+    ProfileFragment profileFragment = ProfileFragment.newInstance();
+
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+    fragmentTransaction.add(
+      R.id.fragment,
+      profileFragment
     )
       .addToBackStack(null)
       .commit();
