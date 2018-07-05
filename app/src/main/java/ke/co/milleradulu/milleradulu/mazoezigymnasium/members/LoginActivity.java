@@ -32,13 +32,12 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
   private static final String TAG = LoginActivity.class.getSimpleName();
+
   ProgressBar load;
   EditText emailAddress, loginPassword;
   String email, password;
 
   SessionManager sessionManager;
-
-  private FirebaseAuth firebaseAuth;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +45,6 @@ public class LoginActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login);
 
     load = findViewById(R.id.login_load);
-
-    firebaseAuth = FirebaseAuth.getInstance();
 
     sessionManager = new SessionManager(getApplicationContext());
 
@@ -59,20 +56,34 @@ public class LoginActivity extends AppCompatActivity {
     email = emailAddress.getText().toString();
     password = loginPassword.getText().toString();
 
+    if(email.isEmpty() || password.isEmpty()) {
+      return;
+    }
 
+    networkCall();
 
-        if(email.isEmpty() || password.isEmpty()) {
-            return;
-        }
+  }
 
-        MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
+  void dashboard() {
+    stopLoading();
+    startActivity(
+      new Intent(LoginActivity.this, MainActivity.class)
+    );
+  }
+  public void signUp(View view) {
+    Intent signUp = new Intent(this, SignUpActivity.class);
+    startActivity(signUp);
+  }
 
-        Call<Member> memberCall = memberClient.login(
-                email,
-                password
-        );
+  void networkCall() {
+    showLoading();
 
-        showLoading();
+    MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
+
+    Call<Member> memberCall = memberClient.login(
+      email,
+      password
+    );
 
     APIHelper.enqueWithRetry(memberCall, 3, new Callback<Member>() {
       @Override
@@ -85,8 +96,8 @@ public class LoginActivity extends AppCompatActivity {
 
           sessionManager.createLoginSession(
             String.format(Locale.ENGLISH, "%d", response.body().getMemberId()),
-            response.body().getMemberLastName()
-
+            response.body().getMemberLastName(),
+            response.body().getMemberEmail()
           );
 
           dashboard();
@@ -105,18 +116,6 @@ public class LoginActivity extends AppCompatActivity {
         ).show();
       }
     });
-
-  }
-
-  void dashboard() {
-    stopLoading();
-    startActivity(
-      new Intent(LoginActivity.this, MainActivity.class)
-    );
-  }
-  public void signUp(View view) {
-    Intent signUp = new Intent(this, SignUpActivity.class);
-    startActivity(signUp);
   }
 
   void showLoading() {
@@ -127,35 +126,4 @@ public class LoginActivity extends AppCompatActivity {
     load.setVisibility(View.GONE);
   }
 
-  @Override
-  protected void onStart() {
-    super.onStart();
-
-    FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-//    updateUI(currentUser);
-  }
-
-  public void createAccount() {
-    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(
-      this,
-      new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-          if(task.isSuccessful()) {
-            Log.d(TAG, "Create user with email: success");
-            FirebaseUser member = firebaseAuth.getCurrentUser();
-//            updateUI(member);
-          } else {
-            Log.w(TAG, "Create user with email: failure ", task.getException());
-            Toast.makeText(
-              LoginActivity.this,
-              "Authentication failed",
-              Toast.LENGTH_SHORT
-            ).show();
-//            updateUI(null);
-          }
-        }
-      }
-    );
-  }
 }

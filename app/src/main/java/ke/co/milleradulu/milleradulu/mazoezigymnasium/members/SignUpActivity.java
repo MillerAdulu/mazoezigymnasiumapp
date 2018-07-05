@@ -79,36 +79,15 @@ public class SignUpActivity extends AppCompatActivity {
     last_name = lastName.getText().toString();
     email = emailAddress.getText().toString();
 
-    MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
-    Call<Member> memberCall = memberClient.register(
-      first_name,
-      last_name,
-      email,
-      password
-    );
-
-    APIHelper.enqueWithRetry(memberCall, 3, new Callback<Member>() {
-      @Override
-      public void onResponse(Call<Member> call, Response<Member> response) {
-        Toast.makeText(SignUpActivity.this, R.string.signed_up, Toast.LENGTH_SHORT).show();
-        signIn(
-          String.format(Locale.ENGLISH, "%d", response.body().getMemberId()),
-          response.body().getMemberLastName()
-        );
-      }
-
-      @Override
-      public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
-        Log.d(TAG, t.getMessage());
-      }
-    });
+    networkCall();
 
   }
 
-  void signIn(String memberId, String lastName) {
+  void signIn(String memberId, String lastName, String email) {
     sessionManager.createLoginSession(
       memberId,
-      lastName
+      lastName,
+      email
     );
     signingUp.setVisibility(View.GONE);
     dashboard();
@@ -126,8 +105,36 @@ public class SignUpActivity extends AppCompatActivity {
     );
   }
 
+  void networkCall() {
+    MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
+    Call<Member> memberCall = memberClient.register(
+      first_name,
+      last_name,
+      email,
+      password
+    );
+
+    APIHelper.enqueWithRetry(memberCall, 3, new Callback<Member>() {
+      @Override
+      public void onResponse(Call<Member> call, Response<Member> response) {
+        Toast.makeText(SignUpActivity.this, R.string.signed_up, Toast.LENGTH_SHORT).show();
+        signIn(
+          String.format(Locale.ENGLISH, "%d", response.body().getMemberId()),
+          response.body().getMemberLastName(),
+          response.body().getMemberEmail()
+        );
+      }
+
+      @Override
+      public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
+        Log.d(TAG, t.getMessage());
+      }
+    });
+  }
+
   void hideKeyboard() {
     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
   }
+
 }
