@@ -10,18 +10,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.ActionCodeSettings;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.Locale;
 
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.HomeActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.MainActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.MemberClient;
@@ -67,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
   void dashboard() {
     stopLoading();
     startActivity(
-      new Intent(LoginActivity.this, MainActivity.class)
+      new Intent(LoginActivity.this, HomeActivity.class)
     );
   }
   public void signUp(View view) {

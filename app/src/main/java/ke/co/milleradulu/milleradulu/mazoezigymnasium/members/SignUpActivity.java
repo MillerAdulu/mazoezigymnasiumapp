@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.MainActivity;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.HomeActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.Member;
@@ -95,7 +95,7 @@ public class SignUpActivity extends AppCompatActivity {
 
   void dashboard() {
     startActivity(
-      new Intent(this, MainActivity.class)
+      new Intent(this, HomeActivity.class)
     );
   }
 
