@@ -58,6 +58,10 @@ public class GymInstructorsFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
+    if (container != null) {
+      container.removeAllViews();
+    }
+
     return inflater.inflate(R.layout.fragment_gym_instructors, container, false);
   }
 

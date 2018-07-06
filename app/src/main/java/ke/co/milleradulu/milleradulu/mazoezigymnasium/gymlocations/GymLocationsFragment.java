@@ -93,6 +93,9 @@ public class GymLocationsFragment extends Fragment implements OnMapReadyCallback
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
+    if (container != null) {
+      container.removeAllViews();
+    }
     return inflater.inflate(R.layout.fragment_gym_locations, container, false);
   }
 

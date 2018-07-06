@@ -60,6 +60,9 @@ public class WorkOutHistoryFragment extends Fragment {
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
+    if (container != null) {
+      container.removeAllViews();
+    }
     return inflater.inflate(R.layout.fragment_work_out_history, container, false);
   }
 
@@ -86,7 +89,12 @@ public class WorkOutHistoryFragment extends Fragment {
     fabAddSession.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        startActivity(
+          new Intent(
+            getContext(),
+            AddWorkOutSessionActivity.class
+          )
+        );
       }
     });
     fetchHistory();
