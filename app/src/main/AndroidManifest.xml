@@ -21,14 +21,11 @@
     <activity
       android:name=".workoutsessions.addsession.AddWorkOutSessionActivity"
       android:label="Add Session"
-      android:parentActivityName=".MainActivity">
+      android:parentActivityName=".HomeActivity">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".MainActivity" />
+        android:value=".HomeActivity" />
     </activity>
-    <activity
-      android:name=".members.UpdateProfileActivity"
-      android:label="Update Profile" />
 
     <meta-data
       android:name="com.google.android.gms.maps"

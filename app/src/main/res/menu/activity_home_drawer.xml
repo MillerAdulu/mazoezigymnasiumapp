@@ -33,6 +33,12 @@
       android:id="@+id/nav_add_session"
       android:icon="@drawable/add_session"
       android:title="@string/nav_session"/>
+
+    <item
+      android:id="@+id/nav_update_profile"
+      android:icon="@drawable/app_update"
+      android:title="@string/update_profile"/>
+    
   </group>
 
 </menu>

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -49,7 +50,8 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
 
   HashMap<String, String> memberData;
   private int exercise_type;
-  EditText addSets, addReps, sessionDate;
+  EditText addSets, addReps;
+  TextView workOutDate;
   Button btnAddSession;
   List<GymLocation> gymLocationsList;
   List<Exercise> exerciseTypesList;
@@ -65,7 +67,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_add_work_out_session);
+    setContentView(R.layout.activity_add_workout_session);
 
     sessionManager = new SessionManager(getApplicationContext());
     sessionManager.checkLogin();
@@ -77,7 +79,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
     addSets = findViewById(R.id.add_sets);
     addReps = findViewById(R.id.add_reps);
     loading = findViewById(R.id.add_session_load);
-    sessionDate = findViewById(R.id.editTextDate);
+    workOutDate = findViewById(R.id.workout_date);
     memberData = sessionManager.getMemberDetails();
     member = Integer.parseInt(
       memberData.get(
@@ -99,7 +101,7 @@ public class AddWorkOutSessionActivity extends AppCompatActivity {
     this.month = month;
     this.day = day;
 
-    sessionDate.setText(
+    workOutDate.setText(
       new StringBuilder()
         .append(day)
         .append("/")

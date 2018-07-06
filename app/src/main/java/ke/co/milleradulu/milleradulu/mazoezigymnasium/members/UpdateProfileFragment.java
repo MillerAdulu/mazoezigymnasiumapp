@@ -2,12 +2,15 @@ package ke.co.milleradulu.milleradulu.mazoezigymnasium.members;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -16,23 +19,25 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Locale;
 
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
-import ke.co.milleradulu.milleradulu.mazoezigymnasium.MainActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIHelper;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.APIServiceProvider;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.clients.MemberClient;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.apihandler.models.Member;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateProfileActivity extends AppCompatActivity {
-  public static final String TAG = UpdateProfileActivity.class.getSimpleName();
+public class UpdateProfileFragment extends Fragment {
+
+  private OnFragmentInteractionListener mListener;
+
+  public static final String TAG = UpdateProfileFragment.class.getSimpleName();
   EditText firstName, lastName, ageText, weightText, targetWeight;
   Button updateProfile;
   ProgressBar profileUpdate;
-  String first_name, last_name, email;
+  String first_name, last_name;
   int age;
   float weight, target_weight;
   SessionManager sessionManager;
@@ -41,22 +46,53 @@ public class UpdateProfileActivity extends AppCompatActivity {
   MemberClient memberClient = APIServiceProvider.createService(MemberClient.class);
   Member member;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_update_profile);
+  public UpdateProfileFragment() {
+    // Required empty public constructor
+  }
 
-    sessionManager = new SessionManager(getApplicationContext());
+  public static UpdateProfileFragment newInstance() {
+    return new UpdateProfileFragment();
+  }
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.fragment_update_profile, container, false);
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    sessionManager = new SessionManager(getContext());
     memberData = sessionManager.getMemberDetails();
 
-    firstName = findViewById(R.id.firstName);
-    lastName = findViewById(R.id.lastName);
-    ageText = findViewById(R.id.age);
-    weightText = findViewById(R.id.weight);
-    targetWeight = findViewById(R.id.targetWeight);
-    profileUpdate = findViewById(R.id.edit_profile);
-    updateProfile = findViewById(R.id.btn_update_profile);
+    firstName = view.findViewById(R.id.firstName);
+    lastName = view.findViewById(R.id.lastName);
+    ageText = view.findViewById(R.id.age);
+    weightText = view.findViewById(R.id.weight);
+    targetWeight = view.findViewById(R.id.targetWeight);
+    profileUpdate = view.findViewById(R.id.edit_profile);
+    updateProfile = view.findViewById(R.id.btn_update_profile);
 
+    updateProfile.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        updateProfile();
+      }
+    });
+
+    networkCall();
+
+
+  }
+
+  void networkCall() {
     Call<Member> memberCall = memberClient.member(
       Integer.parseInt(
         memberData.get(
@@ -79,8 +115,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
       public void onFailure(@NonNull Call<Member> call, @NonNull Throwable t) {
         Log.d(TAG, t.toString());
         Toast.makeText(
-          UpdateProfileActivity.this,
-          "Unable to load your text at this moment",
+          getContext(),
+          "Unable to load your data at this moment",
           Toast.LENGTH_SHORT
         ).show();
         stopLoading();
@@ -114,8 +150,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     );
   }
 
-  public void updateProfile(View view) {
-    hideKeyboard();
+  public void updateProfile() {
     first_name = firstName.getText().toString();
     last_name = lastName.getText().toString();
     age = Integer.parseInt(ageText.getText().toString());
@@ -142,12 +177,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
       public void onResponse(@NonNull Call<Member> call, @NonNull Response<Member> response) {
         if(response.isSuccessful()) {
           stopLoading();
-          Toast.makeText(UpdateProfileActivity.this,
+          Toast.makeText(getContext(),
             "Successful Update",
             Toast.LENGTH_SHORT
           ).show();
-          Intent dashboard = new Intent(UpdateProfileActivity.this, MainActivity.class);
-          startActivity(dashboard);
         } else {
           Log.d(TAG, response.toString());
         }
@@ -158,7 +191,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         Log.d(TAG, t.getMessage());
         stopLoading();
         Toast.makeText(
-          UpdateProfileActivity.this,
+          getContext(),
           "Unable to update your profile at this moment",
           Toast.LENGTH_SHORT
         ).show();
@@ -166,10 +199,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
     });
   }
 
-  void hideKeyboard() {
-    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-  }
 
   void stopLoading() {
     profileUpdate.setVisibility(View.GONE);
@@ -177,5 +206,32 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
   void showLoading() {
     profileUpdate.setVisibility(View.VISIBLE);
+  }
+
+  public void onButtonPressed(Uri uri) {
+    if (mListener != null) {
+      mListener.onFragmentInteraction(uri);
+    }
+  }
+
+  @Override
+  public void onAttach(Context context) {
+    super.onAttach(context);
+    if (context instanceof OnFragmentInteractionListener) {
+      mListener = (OnFragmentInteractionListener) context;
+    } else {
+      throw new RuntimeException(context.toString()
+        + " must implement OnFragmentInteractionListener");
+    }
+  }
+
+  @Override
+  public void onDetach() {
+    super.onDetach();
+    mListener = null;
+  }
+
+  public interface OnFragmentInteractionListener {
+    void onFragmentInteraction(Uri uri);
   }
 }

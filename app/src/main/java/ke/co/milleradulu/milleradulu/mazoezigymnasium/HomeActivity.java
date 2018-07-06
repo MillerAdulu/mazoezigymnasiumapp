@@ -1,7 +1,9 @@
 package ke.co.milleradulu.milleradulu.mazoezigymnasium;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +18,8 @@ import android.view.MenuItem;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gyminstructors.GymInstructorsFragment;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.gymlocations.GymLocationsFragment;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.ProfileFragment;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.members.UpdateProfileFragment;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.addsession.AddWorkOutSessionActivity;
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.workoutsessions.history.WorkOutHistoryFragment;
 
 public class HomeActivity extends AppCompatActivity
@@ -23,7 +27,8 @@ public class HomeActivity extends AppCompatActivity
   GymLocationsFragment.OnFragmentInteractionListener,
   GymInstructorsFragment.OnFragmentInteractionListener,
   ProfileFragment.OnFragmentInteractionListener,
-  WorkOutHistoryFragment.OnFragmentInteractionListener {
+  WorkOutHistoryFragment.OnFragmentInteractionListener,
+  UpdateProfileFragment.OnFragmentInteractionListener {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class HomeActivity extends AppCompatActivity
 
   @SuppressWarnings("StatementWithEmptyBody")
   @Override
-  public boolean onNavigationItemSelected(MenuItem item) {
+  public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     // Handle navigation view item clicks here.
     int id = item.getItemId();
 
@@ -86,9 +91,17 @@ public class HomeActivity extends AppCompatActivity
       displayInstructors();
 
     } else if (id == R.id.nav_add_session) {
+      startActivity(
+        new Intent(
+          this,
+          AddWorkOutSessionActivity.class
+        )
+      );
 
     } else if (id == R.id.nav_history) {
       displayWorkOutHistory();
+    } else if (id == R.id.nav_update_profile) {
+      displayUpdateProfile();
     }
 
     DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -150,6 +163,21 @@ public class HomeActivity extends AppCompatActivity
     )
       .addToBackStack(null)
       .commit();
+  }
+
+  void displayUpdateProfile() {
+    UpdateProfileFragment updateProfileFragment = UpdateProfileFragment.newInstance();
+
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+    fragmentTransaction.add(
+      R.id.fragment,
+      updateProfileFragment
+    )
+      .addToBackStack(null)
+      .commit();
+
   }
 
   @Override

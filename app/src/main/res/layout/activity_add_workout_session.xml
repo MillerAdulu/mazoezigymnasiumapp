@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical"
   android:layout_height="match_parent"
-  tools:context=".members.UpdateProfileFragment">
+  tools:context=".workoutsessions.addsession.AddWorkOutSessionActivity">
+
+  <ProgressBar
+    android:id="@+id/add_session_load"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
 
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <ProgressBar
-      android:id="@+id/edit_profile"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
 
     <LinearLayout
       android:layout_width="match_parent"
@@ -20,17 +22,18 @@
       android:orientation="horizontal">
 
       <TextView
-        android:id="@+id/first_name_label"
+        android:id="@+id/pick_date_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/memberFirstName" />
+        android:text="@string/choose_date" />
 
-      <EditText
-        android:id="@+id/firstName"
+      <TextView
+        android:id="@+id/workout_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/memberFirstName"
-        android:inputType="textPersonName" />
+        android:hint="@string/tap_to_add_a_date"
+        android:onClick="showDatePickerDialog"
+        />
 
     </LinearLayout>
 
@@ -40,17 +43,15 @@
       android:orientation="horizontal">
 
       <TextView
-        android:id="@+id/last_name_label"
+        android:id="@+id/location_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/memberLastName" />
+        android:text="@string/session_location" />
 
-      <EditText
-        android:id="@+id/lastName"
+      <Spinner
+        android:id="@+id/location_spinner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/memberLastName"
-        android:inputType="textPersonName" />
+        android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -60,16 +61,34 @@
       android:orientation="horizontal">
 
       <TextView
-        android:id="@+id/age_label"
+        android:id="@+id/exercise_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/memberAge" />
+        android:text="@string/session_exercise" />
+
+      <Spinner
+        android:id="@+id/exercise_type_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+      <TextView
+        android:id="@+id/add_sets_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/session_sets" />
 
       <EditText
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
+        android:id="@+id/add_sets"
+        android:layout_width="72dp"
         android:layout_height="wrap_content"
-        android:hint="@string/memberAge"
+        android:hint="@string/session_sets"
         android:inputType="number" />
 
     </LinearLayout>
@@ -80,17 +99,17 @@
       android:orientation="horizontal">
 
       <TextView
-        android:id="@+id/weight_label"
+        android:id="@+id/add_reps_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/memberWeight" />
+        android:text="@string/session_reps" />
 
       <EditText
-        android:id="@+id/weight"
+        android:id="@+id/add_reps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/memberWeight"
-        android:inputType="numberDecimal" />
+        android:hint="@string/session_reps"
+        android:inputType="number" />
 
     </LinearLayout>
 
@@ -99,33 +118,14 @@
       android:layout_height="wrap_content"
       android:orientation="horizontal">
 
-      <TextView
-        android:id="@+id/target_weight_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/memberTargetWeight" />
-
-      <EditText
-        android:id="@+id/targetWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/memberTargetWeight"
-        android:inputType="numberDecimal" />
-
-    </LinearLayout>
-
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-
       <Button
-        android:id="@+id/btn_update_profile"
-        android:enabled="false"
-        android:layout_width="match_parent"
+        android:id="@+id/add_session"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/update_profile"/>
+        android:text="@string/add_session"
+        android:onClick="addSession"/>
 
     </LinearLayout>
   </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
