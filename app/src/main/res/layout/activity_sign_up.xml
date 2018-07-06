@@ -1,68 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical"
-  tools:context=".members.SignUpActivity">
 
-  <EditText
-    android:id="@+id/signUpFirstName"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:fitsSystemWindows="true">
+
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="@string/memberFirstName"
-    android:inputType="textPersonName" />
+    android:orientation="vertical"
+    android:paddingTop="56dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    tools:context=".members.SignUpActivity">
 
-  <EditText
-    android:id="@+id/signUpLastName"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/memberLastName"
-    android:inputType="textPersonName" />
+    <ImageView android:src="@mipmap/ic_launcher"
+      android:layout_width="wrap_content"
+      android:layout_height="72dp"
+      android:layout_marginBottom="24dp"
+      android:layout_gravity="center_horizontal" />
 
-  <EditText
-    android:id="@+id/signUpEmailAddress"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/instructorEmail"
-    android:inputType="textEmailAddress" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <EditText
+      android:id="@+id/signUpFirstName"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/memberFirstName"
+      android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
 
-  <EditText
-    android:id="@+id/signUpPassword"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/enter_password"
-    android:inputType="textPassword" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <EditText
+      android:id="@+id/signUpLastName"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/memberLastName"
+      android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
 
-  <EditText
-    android:id="@+id/signUpConfirmPassword"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="@string/confirm_password"
-    android:inputType="textPassword" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <EditText
+      android:id="@+id/signUpEmailAddress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/instructorEmail"
+      android:inputType="textEmailAddress" />
+    </android.support.design.widget.TextInputLayout>
 
-  <TextView
-    android:id="@+id/signUpError"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="invisible" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <EditText
+      android:id="@+id/signUpPassword"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/enter_password"
+      android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
 
-  <Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="signUp"
-    android:text="@string/sign_up" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <EditText
+      android:id="@+id/signUpConfirmPassword"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/confirm_password"
+      android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
 
-  <ProgressBar
-    android:id="@+id/sign_up_load"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="invisible" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <TextView
+      android:id="@+id/signUpError"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="invisible" />
+    </android.support.design.widget.TextInputLayout>
 
-  <Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="signIn"
-    android:text="@string/common_signin_button_text" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:onClick="signUp"
+      android:text="@string/sign_up" />
+    </android.support.design.widget.TextInputLayout>
 
-</LinearLayout>
+    <ProgressBar
+      android:id="@+id/sign_up_load"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="invisible" />
+
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:onClick="signIn"
+      android:text="@string/common_signin_button_text" />
+
+  </LinearLayout>
+</ScrollView>

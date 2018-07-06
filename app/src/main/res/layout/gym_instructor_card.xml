@@ -24,6 +24,7 @@
             android:scaleType="fitXY"
             android:contentDescription="@string/our_awesome_gym_instructor"/>
 
+
         <TextView
             android:id="@+id/gym_instructor_names"
             android:layout_width="match_parent"

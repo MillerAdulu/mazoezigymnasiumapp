@@ -1,42 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical"
-  tools:context=".members.LoginActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:fitsSystemWindows="true">
 
-
-  <EditText
-    android:id="@+id/signInEmailAddress"
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:inputType="textEmailAddress"
-    android:hint="@string/instructorEmail" />
+    android:orientation="vertical"
+    android:paddingTop="56dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    tools:context=".members.LoginActivity">
 
-  <EditText
-    android:id="@+id/signInPassword"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="textPassword"
-    android:hint="@string/enter_password" />
+    <ImageView android:src="@mipmap/ic_launcher"
+      android:layout_width="wrap_content"
+      android:layout_height="72dp"
+      android:layout_marginBottom="24dp"
+      android:layout_gravity="center_horizontal" />
 
-  <Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/common_signin_button_text"
-    android:onClick="login" />
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <EditText
+      android:id="@+id/signInEmailAddress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="textEmailAddress"
+      android:hint="@string/instructorEmail" />
+    </android.support.design.widget.TextInputLayout>
 
-  <ProgressBar
-    android:id="@+id/login_load"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="invisible"/>
+    <android.support.design.widget.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="8dp">
+    <EditText
+      android:id="@+id/signInPassword"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="textPassword"
+      android:hint="@string/enter_password" />
+    </android.support.design.widget.TextInputLayout>
 
-  <Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="signUp"
-    android:text="@string/sign_up" />
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/common_signin_button_text"
+      android:onClick="login" />
 
-</LinearLayout>
+    <ProgressBar
+      android:id="@+id/login_load"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="invisible"/>
+
+
+    <TextView android:id="@+id/link_signup"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="24dp"
+      android:onClick="signUp"
+      android:text="@string/no_account_yet_create_one"
+      android:gravity="center"
+      android:textSize="16sp"/>
+
+
+  </LinearLayout>
+</ScrollView>
