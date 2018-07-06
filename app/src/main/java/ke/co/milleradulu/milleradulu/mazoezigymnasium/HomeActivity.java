@@ -59,6 +59,7 @@ public class HomeActivity extends AppCompatActivity
 
     NavigationView navigationView = findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
+    displayProfile();
 
 //    names = findViewById(R.id.member_name);
 //    email = findViewById(R.id.member_email);
