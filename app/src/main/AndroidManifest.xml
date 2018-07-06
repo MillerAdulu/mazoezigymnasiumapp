@@ -44,7 +44,12 @@
     </activity>
     <activity
       android:name=".settings.SettingsActivity"
-      android:label="@string/title_activity_settings" />
+      android:label="@string/title_activity_settings"
+      android:parentActivityName=".HomeActivity">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".HomeActivity" />
+    </activity>
     <activity
       android:name=".HomeActivity"
       android:label="@string/title_activity_home"

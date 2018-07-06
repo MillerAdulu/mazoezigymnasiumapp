@@ -21,8 +21,11 @@ import android.view.MenuItem;
 import java.util.List;
 
 import ke.co.milleradulu.milleradulu.mazoezigymnasium.R;
+import ke.co.milleradulu.milleradulu.mazoezigymnasium.SessionManager;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
+
+  SessionManager sessionManager;
 
   private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
     @Override
@@ -81,6 +84,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setupActionBar();
+
+    sessionManager = new SessionManager(getApplicationContext());
+    sessionManager.checkLogin();
   }
 
   private void setupActionBar() {
