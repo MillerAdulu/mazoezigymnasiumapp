@@ -21,13 +21,13 @@ public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdap
     private List<GymInstructor> gymInstructorList;
     private Context instructorContext;
 
-    GymInstructorAdapter(List<GymInstructor> gymInstructorList, Context context) {
+    public GymInstructorAdapter(List<GymInstructor> gymInstructorList, Context context) {
         this.gymInstructorList = gymInstructorList;
         this.instructorContext = context;
     }
 
     public class GymInstructorViewHolder extends RecyclerView.ViewHolder {
-        public TextView names, email, gender;
+        TextView names, email, gender;
         public ImageView image;
 
         GymInstructorViewHolder(View itemView) {
@@ -47,7 +47,14 @@ public class GymInstructorAdapter extends RecyclerView.Adapter<GymInstructorAdap
     @NonNull
     @Override
     public GymInstructorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View gymInstructorView = LayoutInflater.from(parent.getContext()).inflate(R.layout.gym_instructor_card, parent, false);
+        View gymInstructorView = LayoutInflater.from(
+          parent.getContext()
+        )
+          .inflate(
+            R.layout.gym_instructor_card,
+            parent,
+            false
+          );
         return new GymInstructorViewHolder(gymInstructorView);
     }
 
