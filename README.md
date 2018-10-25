@@ -22,6 +22,6 @@ This project was aimed at developing Android Mobile Development skills by making
 2. Build the project and :tada:
 
 ## Service Providers
-The API is on [Heroku](https://mazoezigymnasium.herokuapp.com/)
+The API is on [Heroku](https://mazoezigymnasium.herokuapp.com/). Available on Github at [Mazoezi Gymnasium API](https://github.com/MillerAdulu/mazoezigymnasiumapi)
 
 The database is hosted on [DB4Free.net](https://db4free.net/)
